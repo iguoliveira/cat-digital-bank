@@ -1,7 +1,7 @@
-import { Navbar } from './components/navbar/Navbar'
+import { Homepage } from './routes/Homepage'
 
 export const App = () => {
   return(
-    <Navbar />
+    <Homepage />
   )
 }

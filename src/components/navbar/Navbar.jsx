@@ -1,9 +1,10 @@
 import Logo from '/cat-logo-colored.png'
 import { Links } from './links/Links';
+import { Subscription } from './links/Subscription';
 
 export const Navbar = () => {
   return (
-    <div className="bg-white fixed inset-0 p-3">
+    <div className="bg-transparent fixed top-0 p-3 w-screen">
       <div className="flex justify-between items-center mx-4">
         <div className="flex gap-8 text-lg">
           <img src={Logo} className="w-16" />
@@ -15,7 +16,7 @@ export const Navbar = () => {
           </div>
         </div>
 
-        <div>Assine ja!</div>
+        <Subscription />
       </div>
     </div>
   );
