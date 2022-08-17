@@ -1,5 +1,7 @@
+import { Navbar } from './components/navbar/Navbar'
+
 export const App = () => {
   return(
-    <div>OI</div>
+    <Navbar />
   )
 }
