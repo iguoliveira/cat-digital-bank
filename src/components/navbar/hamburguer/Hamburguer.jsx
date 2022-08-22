@@ -17,11 +17,11 @@ export const Hamburguer = () => {
 
       <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
         <div
-          className="absolute top-0 right-0 px-8 py-8"
+          className="absolute top-0 right-0 px-8 py-8 cursor-pointer"
           onClick={() => setIsNavOpen(false)}
         >
           <svg
-            className="h-8 w-8 text-gray-600"
+            className="h-8 w-8 text-black"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

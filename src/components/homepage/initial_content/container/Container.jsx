@@ -1,9 +1,20 @@
-import { Download } from "./download/Download"
+import { Download } from "./download/Download";
+import { Card } from "../card/Card";
+import DataSecurity from "/data-security.png";
 
 export const Container = () => {
-    return(
-        <div className="h-1/2 bg-mainBrandColor">
-             <Download />
-        </div>
-    )
-}
+  return (
+    <div className="h-screen w-screen bg-mainBrandColor flex flex-col justify-around">
+      <Download />
+      <div className="flex justify-around">
+        <Card
+          image={DataSecurity}
+          title="Data Security"
+          content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+        />
+        <Card />
+        <Card />
+      </div>
+    </div>
+  );
+};
