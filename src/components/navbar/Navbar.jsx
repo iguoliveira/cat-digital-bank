@@ -1,12 +1,12 @@
-import Logo from "/cat-logo-navbar.png";
+import { Logo } from "./logo/Logo";
+import { LinkContainer } from "./link/LinkContainer";
+
 export const Navbar = () => {
   return (
     <div className="bg-mainBrandColor w-screen py-4">
-      <div className="px-4">
-        <img className="w-48" src={Logo} />
-      </div>
-      <div>
-        
+      <div className="flex items-center justify-between px-5">
+        <Logo />
+        <LinkContainer />
       </div>
     </div>
   );
