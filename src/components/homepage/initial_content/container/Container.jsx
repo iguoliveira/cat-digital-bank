@@ -6,9 +6,11 @@ import Verification from "/verification.png";
 
 export const Container = () => {
   return (
-    <div className="h-screen bg-mainBrandColor flex flex-col justify-around">
+    <div className="flex flex-col justify-between">
+      <div className="mt-10">
         <Download />
-      {/* <div className="flex flex-wrap justify-around gap-24">
+      </div>
+      <div className="flex flex-wrap justify-around gap-24 mt-24">
         <Card
           image={DataSecurity}
           title="Data Security"
@@ -24,7 +26,7 @@ export const Container = () => {
           title="Certification"
           content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         />
-      </div> */}
+      </div>
     </div>
   );
 };

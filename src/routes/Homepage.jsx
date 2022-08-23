@@ -3,7 +3,7 @@ import { Container } from "../components/homepage/initial_content/container/Cont
 
 export const Homepage = () => {
     return (
-        <div className="h-screen">
+        <div className="h-screen w-screen overflow-auto bg-mainBrandColor">
             <Navbar />                
             <Container />
         </div>
