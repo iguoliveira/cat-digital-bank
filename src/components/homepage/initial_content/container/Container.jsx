@@ -6,7 +6,7 @@ export const Container = () => {
   return (
     <div className="h-screen bg-mainBrandColor flex flex-col justify-around">
       <Download />
-      <div className="flex justify-around">
+      <div className="flex justify-around flex-wrap gap-24">
         <Card
           image={DataSecurity}
           title="Data Security"
