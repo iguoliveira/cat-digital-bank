@@ -4,7 +4,7 @@ import { Container } from "../components/homepage/initial_content/container/Cont
 export const Homepage = () => {
     return (
         <div className="h-screen">
-            <Navbar />
+            <Navbar />                
             <Container />
         </div>
     )
