@@ -7,7 +7,7 @@ import Verification from "/verification.png";
 export const Container = () => {
   return (
     <div className="flex flex-col justify-between">
-      <div className="mt-10">
+      <div className="h-screen flex items-center">
         <Download />
       </div>
       <div className="flex flex-wrap justify-around gap-24 mt-24">

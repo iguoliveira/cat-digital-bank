@@ -5,7 +5,7 @@ export const Card = (props) => {
       <div className="-mt-20 md:absolute md:bottom-56">
         <img src={props.image} />
       </div>
-        <div className="flex flex-col items-center py-5 md:py-14">
+        <div className="flex flex-col items-center py-5 md:py-14 text-center">
           <div className="text-2xl font-bold">{props.title}</div>
           <div className="text-center">{props.content}</div>
         </div>
