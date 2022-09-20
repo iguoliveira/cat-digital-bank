@@ -8,8 +8,12 @@ module.exports = {
     extend: {
       colors: {
         'mainBrandColor': '#8257E5',
-        'secondBrandColor': '#52D053'
-      }
+        'secondBrandColor': '#52D053',
+        'pink': '#E950C7',
+      },
+      width: {
+        'grid': '240px'
+      },
     },
   },
   plugins: [],
