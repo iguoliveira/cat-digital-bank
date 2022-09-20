@@ -27,16 +27,8 @@ export const Container = () => {
           content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         />
       </div>
-      <div className="h-screen bg-white py-32 flex flex-col justify-center items-center space-y-10">
-        <div className="w-grid text-left">
-          <span className="text-3xl font-bold">
-            Stay on top of all the news about financial services, secure
-            payments and managing your business on the <span>About CAT</span>
-          </span>
-        </div>
-        <button className="bg-pink-1000 hover:bg-pink-500 py-4 px-5 text-white font-bold w-grid text-xl uppercase shadow-md shadow-black">
-          Access Content
-        </button>
+      <div>
+        <AboutBank />
       </div>
     </div>
   );

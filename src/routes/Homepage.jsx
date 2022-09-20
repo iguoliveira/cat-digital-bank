@@ -1,5 +1,5 @@
 import { Navbar } from "../components/navbar/Navbar"
-import { Container } from "../components/homepage/initial_content/container/Container"
+import { Container } from "../components/homepage/container/Container"
 
 export const Homepage = () => {
     return (
