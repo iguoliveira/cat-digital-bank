@@ -9,7 +9,10 @@ module.exports = {
       colors: {
         'mainBrandColor': '#8257E5',
         'secondBrandColor': '#52D053',
-        'pink': '#E950C7',
+        'pink': {
+          '1000':'#E950C7',
+          '500': '#eb6ed0',
+        },
       },
       width: {
         'grid': '240px'

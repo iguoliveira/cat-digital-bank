@@ -34,7 +34,7 @@ export const Container = () => {
             payments and managing your business on the <span>About CAT</span>
           </span>
         </div>
-        <button className="bg-pink py-4 px-5 text-white font-bold w-grid text-xl uppercase">
+        <button className="bg-pink-1000 hover:bg-pink-500 py-4 px-5 text-white font-bold w-grid text-xl uppercase shadow-md shadow-black">
           Access Content
         </button>
       </div>
