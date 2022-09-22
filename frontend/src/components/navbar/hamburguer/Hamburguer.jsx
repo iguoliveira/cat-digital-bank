@@ -38,10 +38,13 @@ export const Hamburguer = () => {
             <Link name="Home" />
           </li>
           <li className="border-b border-gray-400 my-8 uppercase">
-            <Link name="About" />
+            <Link name="Sign Up" />
           </li>
           <li className="border-b border-gray-400 my-8 uppercase">
             <Link name="Download" />
+          </li>
+          <li className="border-b border-gray-400 my-8 uppercase">
+            <Link name="About" />
           </li>
         </ul>
       </div>

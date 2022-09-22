@@ -15,7 +15,7 @@ export class User {
     cpf: string
 
     @Column()
-    birthDay: number
+    birthDay: Date
 
     @Column({ length: 1 })
     sex: string
