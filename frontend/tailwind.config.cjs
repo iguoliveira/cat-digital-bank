@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        mainBrandColor: "#8257E5",
+        mainBrandColor: {
+          1000: "#8257E5",
+          500: "#a88aed"
+        },
         secondBrandColor: "#52D053",
         pink: {
           1000: "#E950C7",
