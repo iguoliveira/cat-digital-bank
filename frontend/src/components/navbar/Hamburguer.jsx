@@ -41,7 +41,7 @@ export const Hamburguer = () => {
             </Link>
           </li>
           <li className="border-b border-gray-400 my-8 uppercase">
-            <Link to="signup">
+            <Link to="/signup">
               <LinkItem name="Sign Up" />
             </Link>
           </li>

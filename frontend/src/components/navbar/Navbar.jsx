@@ -5,7 +5,7 @@ import { Hamburguer } from "./Hamburguer";
 export const Navbar = () => {
 
   return (
-    <div className="bg-white py-4 fixed  w-screen z-50">
+    <header className="bg-white py-4 w-screen">
       <div className="flex items-center justify-between px-4">
         <Logo />
         <nav>
@@ -13,6 +13,6 @@ export const Navbar = () => {
           <LinkContainer />
         </nav>
       </div>
-    </div>
+    </header>
   );
 };

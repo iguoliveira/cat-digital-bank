@@ -1,5 +1,5 @@
-import { Download } from "./download/Download";
-import { Card } from "./card/Card";
+import { Download } from "./Download";
+import { Card } from "./Card";
 import DataSecurity from "/data-security.png";
 import Time from "/time.png";
 import Verification from "/verification.png";
