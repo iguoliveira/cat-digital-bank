@@ -1,13 +1,13 @@
 import { SearchBar } from "./searchbar/SearchBar";
-import { Link } from "./Link";
+import { LinkItem } from "./LinkItem";
 
 export const LinkContainer = () => {
   return (
       <div className="DESKTOP-MENU hidden space-x-8 lg:flex">
         <SearchBar />
-        <Link name="Home" />
-        <Link name="About" />
-        <Link name="Download" />
+        <LinkItem name="Home" />
+        <LinkItem name="About" />
+        <LinkItem name="Download" />
       </div>
   );
 };

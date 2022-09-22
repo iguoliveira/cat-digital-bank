@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "../link/Link";
+import { Link } from "react-router-dom";
+import { LinkItem } from "./link/LinkItem";
 
 export const Hamburguer = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -35,16 +36,20 @@ export const Hamburguer = () => {
         </div>
         <ul className="flex flex-col items-center justify-between min-h-[250px]">
           <li className="border-b border-gray-400 my-8 uppercase">
-            <Link name="Home" />
+            <Link to="/">
+              <LinkItem name="Home" />
+            </Link>
           </li>
           <li className="border-b border-gray-400 my-8 uppercase">
-            <Link name="Sign Up" />
+            <Link to="signup">
+              <LinkItem name="Sign Up" />
+            </Link>
           </li>
           <li className="border-b border-gray-400 my-8 uppercase">
-            <Link name="Download" />
+            <LinkItem name="Download" />
           </li>
           <li className="border-b border-gray-400 my-8 uppercase">
-            <Link name="About" />
+            <LinkItem name="About" />
           </li>
         </ul>
       </div>

@@ -1,4 +1,5 @@
 import Pointer from "/pointer-download.png";
+import { Link } from "react-router-dom";
 
 export const Download = () => {
 
@@ -10,9 +11,9 @@ export const Download = () => {
         </span>
         <span>in one click</span>
       </div>
-      <button className="bg-black hover:bg-gray-900 w-grid md:w-48 text-white flex justify-center text-2xl uppercase md:text-4xl py-3 font-bold shadow-md shadow-black">
-        Download
-      </button>
+      <Link to="signup" className="bg-black hover:bg-gray-900 w-grid md:w-48 text-white flex justify-center text-2xl uppercase md:text-4xl py-3 font-bold shadow-md shadow-black">
+        Sign Up
+      </Link>
       <div className="relative bottom-6 md:bottom-8 left-36 md:left-36">
         <img className="w-20 md:w-28" src={Pointer} />
       </div>

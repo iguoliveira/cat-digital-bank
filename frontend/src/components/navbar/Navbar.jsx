@@ -1,6 +1,6 @@
-import { Logo } from "./logo/Logo";
+import { Logo } from "./Logo";
 import { LinkContainer } from "./link/LinkContainer";
-import { Hamburguer } from "./hamburguer/Hamburguer";
+import { Hamburguer } from "./Hamburguer";
 
 export const Navbar = () => {
 
