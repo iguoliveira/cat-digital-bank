@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { POST } from '../services/api'
-import { FormValidation } from '../services/FormValidation'
+import { SignupValidation } from '../services/FormValidation'
+import { Notify } from 'notiflix'
 import { InputText } from "../components/input/InputText";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
@@ -18,13 +19,23 @@ export const Signup = () => {
     'name': name, 'sex': sex, 'email': email, 'birthDay': birthday, 'cpf': cpf, 'password': password
   }
 
+  const SignupUser = () => {
+    event.preventDefault()
+    if(SignupValidation(name, email, cpf, password, confirmpassword, sex, birthday)){
+      Notify.success("Sucesso no registro do Usuario!")
+      POST(data)
+    }else{
+      Notify.failure('Erro no registro!')
+    }
+  }
+
   return (
     <div className="h-screen bg-mainBrandColor-1000 overflow-hidden">
       <Navbar />
       <div className="h-[92%] flex flex-col justify-center items-center">
         <div className="bg-white w-80 p-8 flex flex-col justify-center items-center rounded shadow-black shadow-md space-y-5">
           <div className="font-bold uppercase text-2xl">Sign Up</div>
-          <form className="flex flex-col items-center space-y-4 w-72" onSubmit={() => console.log(FormValidation(name, email, cpf, password, confirmpassword, sex, birthday))}>
+          <form className="flex flex-col items-center space-y-4 w-72" onSubmit={SignupUser}>
             <InputText type="text" placeholder="Name" value={name} onchange={(evt) => setName(evt.target.value)} />
             <InputText type="email" placeholder="Email" value={email} onchange={(evt) => setEmail(evt.target.value)} />
             <InputText type="text" placeholder="CPF" value={cpf} onchange={(evt) => setCpf(evt.target.value)} maxlength="11" />

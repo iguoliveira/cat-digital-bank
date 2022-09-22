@@ -1,16 +1,16 @@
-export const FormValidation = (name = "", email="", cpf="", password="", confirmPassword="", sex="", birthday="") => {
+export const SignupValidation = (name = "", email="", cpf="", password="", confirmPassword="", sex="", birthday="") => {
     if(name.length == 0){
-        return "nome nao pode ser zero"
+        return false
     }else if(email.length == 0){
-        return "email n pode ser zero"
+        return false
     }else if(cpf.length == 0){
-        return "cpf n pode ser zero"
+        return false
     }else if(password.length == 0){
-        return "senha n pode ser zero"
+        return false
     }else if(password != confirmPassword){
-        return "as senhas nao batem"
+        return false
     }else if(sex.length == 0){
-        return "defina o seu sexo"
+        return false
     }else{
         return true
     }
