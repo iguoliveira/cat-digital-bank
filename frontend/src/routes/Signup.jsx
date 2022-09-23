@@ -107,7 +107,7 @@ export const Signup = () => {
               value={birthday}
               onchange={(evt) => setBirthday(evt.target.value)}
             />
-            <Button onclick={() => SubmitEvent}>Sign up</Button>
+            <Button>Sign up</Button>
           </form>
           <Link
             to="/login"

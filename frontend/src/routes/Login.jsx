@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { POST } from "../services/api";
-import { SignupValidation } from "../services/FormValidation";
 import { Link } from "react-router-dom";
-import { Notify } from "notiflix";
 import { InputText } from "../components/input/InputText";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
@@ -12,21 +9,6 @@ export const Login = () => {
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
 
-  var data = {
-    cpf: cpf,
-    password: password,
-  };
-
-  const SignupUser = () => {
-    event.preventDefault();
-    if (SignupValidation(cpf, password)) {
-      Notify.success("Sucesso no registro do Usuario!");
-      POST(data);
-    } else {
-      Notify.failure("Erro no registro!");
-    }
-  };
-
   return (
     <div className="h-screen bg-mainBrandColor-1000 overflow-hidden">
       <Navbar />
@@ -34,7 +16,7 @@ export const Login = () => {
         <FormCard title="LOGIN">
           <form
             className="flex flex-col items-center space-y-4 w-72"
-            onSubmit={SignupUser}
+            // onSubmit={SignupUser}
           >
             <InputText
               type="text"
@@ -49,7 +31,7 @@ export const Login = () => {
               value={password}
               onchange={(evt) => setPassword(evt.target.value)}
             />
-            <Button onclick={() => SubmitEvent}>Login</Button>
+            <Button>Login</Button>
           </form>
           <Link
             to="/signup"

@@ -14,7 +14,14 @@ export class UserService {
   ) { }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    return await this.userRepository.save(createUserDto)
+    let user = new User()
+    user.name = createUserDto.name
+    user.email = createUserDto.email
+    user.cpf = createUserDto.cpf
+    user.birthDay = createUserDto.birthDay
+    user.sex = createUserDto.sex
+    user.password = createUserDto.password
+    return await this.userRepository.save(user)
   }
 
   async findAll(): Promise<User[]> {
