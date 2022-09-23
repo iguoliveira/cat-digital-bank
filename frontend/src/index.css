@@ -6,3 +6,9 @@
   margin: 0;
   padding: 0;
 }
+
+@layer components{
+  .defaultShadow{
+    @apply shadow-black shadow-md
+  }
+}
