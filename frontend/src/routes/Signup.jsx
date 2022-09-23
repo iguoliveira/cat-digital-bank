@@ -16,8 +16,7 @@ export const Signup = () => {
   const [sex, setSex] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
-  const { state } = useLocation();
-  const { nameValue, emailValue } = state;
+  const location = useLocation();
 
   var data = {
     name: name,
@@ -29,11 +28,11 @@ export const Signup = () => {
   };
 
   useEffect(() => {
-    if(nameValue && emailValue){
-      setName(nameValue)
-      setEmail(emailValue)
+    if (location.state) {
+      setName(location.state.nameValue);
+      setEmail(location.state.emailValue);
     }
-  }, [])
+  }, []);
 
   const SignupUser = () => {
     event.preventDefault();

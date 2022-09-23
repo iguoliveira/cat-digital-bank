@@ -12,7 +12,7 @@ export const Download = () => {
 
   const goToSignUpWithData = () => {
     event.preventDefault();
-    navigate("/signup", { state: { nameValue: name, emailValue: email } });
+    navigate("/signup", { state: { nameValue:name, emailValue: email }});
   };
 
   return (
