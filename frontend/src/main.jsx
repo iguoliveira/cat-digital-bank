@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 import { Homepage } from "./routes/Homepage";
 import { Login } from "./routes/Login";
 import { Signup } from "./routes/Signup";
-import "./index.css";
+import { UserProfile } from "./routes/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     path: "login",
     element: <Login />,
   },
+  {
+    path: 'user/:id',
+    element: <UserProfile />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

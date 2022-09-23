@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { POST, AUTH } from "../services/api";
+import { AUTH } from "../services/api";
 import { Link, useNavigate } from "react-router-dom";
 import { InputText } from "../components/input/InputText";
+import { Notify } from "notiflix";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
 import { FormCard } from "../components/FormCard";
@@ -10,15 +11,21 @@ export const Login = () => {
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
 
+  const notifyStyle = {
+    position:'left-top',
+    timeout: 1500,
+  }
+
   const navigate = useNavigate()
 
   const LoginUser = async (event) => {
     event.preventDefault();
     let user = await AUTH({username: cpf, password: password})
     if(user.ok){
-      console.log(user.user)
+      Notify.success(`Bem Vindo ${user.user.name}!`, notifyStyle);
+      navigate('/')
     } else {
-      console.log('nao logo')
+      Notify.failure("Credenciais Invalidas!", notifyStyle);
     }
   }
 
