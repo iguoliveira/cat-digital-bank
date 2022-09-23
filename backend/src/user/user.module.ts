@@ -12,6 +12,9 @@ import { userProviders } from 'src/user/user.providers';
   ],
   controllers: [
       UserController,
+  ],
+  exports: [
+    UserService
   ]
 })
 

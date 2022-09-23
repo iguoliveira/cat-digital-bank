@@ -1,11 +1,9 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from "typeorm";
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { USER_REPOSITORY } from "../constants"
-
-
+import * as bcrypt from 'bcrypt'
 @Injectable()
 export class UserService {
   constructor(
@@ -13,6 +11,10 @@ export class UserService {
     private userRepository: Repository<User>,
   ) { }
 
+  async findAll(): Promise<User[]> {
+    return this.userRepository.find();
+  }
+  
   async create(createUserDto: CreateUserDto): Promise<User> {
     let user = new User()
     user.name = createUserDto.name
@@ -20,23 +22,11 @@ export class UserService {
     user.cpf = createUserDto.cpf
     user.birthDay = createUserDto.birthDay
     user.sex = createUserDto.sex
-    user.password = createUserDto.password
+    user.password = bcrypt.hashSync(createUserDto.password, 8)
     return await this.userRepository.save(user)
   }
 
-  async findAll(): Promise<User[]> {
-    return this.userRepository.find();
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async findOne(cpf: string): Promise<User | undefined> {
+    return this.userRepository.findOneBy({ cpf: cpf });
   }
 }
