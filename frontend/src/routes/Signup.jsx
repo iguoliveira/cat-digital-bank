@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { POST } from "../services/api";
 import { SignupValidation } from "../services/FormValidation";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Notify } from "notiflix";
 import { InputText } from "../components/input/InputText";
 import { Navbar } from "../components/navbar/Navbar";
@@ -16,6 +16,8 @@ export const Signup = () => {
   const [sex, setSex] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
+  const { state } = useLocation();
+  const { nameValue, emailValue } = state;
 
   var data = {
     name: name,
@@ -25,6 +27,13 @@ export const Signup = () => {
     cpf: cpf,
     password: password,
   };
+
+  useEffect(() => {
+    if(nameValue && emailValue){
+      setName(nameValue)
+      setEmail(emailValue)
+    }
+  }, [])
 
   const SignupUser = () => {
     event.preventDefault();
