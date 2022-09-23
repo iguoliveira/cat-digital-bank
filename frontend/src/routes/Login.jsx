@@ -6,6 +6,7 @@ import { Notify } from "notiflix";
 import { InputText } from "../components/input/InputText";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
+import { FormCard } from "../components/FormCard";
 
 export const Login = () => {
   const [cpf, setCpf] = useState("");
@@ -29,9 +30,8 @@ export const Login = () => {
   return (
     <div className="h-screen bg-mainBrandColor-1000 overflow-hidden">
       <Navbar />
-      <div className="h-[92%] flex flex-col justify-center items-center">
-        <div className="bg-white w-80 p-8 flex flex-col justify-center items-center rounded shadow-black shadow-md space-y-5">
-          <div className="font-bold uppercase text-2xl">Login</div>
+      <div className="h-[92%] flex flex-col justify-center items-center text-center">
+        <FormCard title="LOGIN">
           <form
             className="flex flex-col items-center space-y-4 w-72"
             onSubmit={SignupUser}
@@ -53,11 +53,11 @@ export const Login = () => {
           </form>
           <Link
             to="/signup"
-            className="text-sm text-mainBrandColor-1000 hover:text-mainBrandColor-500"
+            className="text-[10px] text-mainBrandColor-1000 hover:text-mainBrandColor-500"
           >
-            Doesn't have an account? Click here and Sign Up
+            Doesn't have an account? Click here to Sign Up
           </Link>
-        </div>
+        </FormCard>
       </div>
     </div>
   );

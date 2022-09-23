@@ -9,7 +9,7 @@ export const InputText = ({
     <input
       type={type}
       placeholder={placeholder}
-      className="border-black border-b w-full p-3 focus:border-l-2 focus:border-mainBrandColor-1000 focus:outline-none text-xl"
+      className="border-black border-b w-full p-3 focus:border-l-2 focus:border-mainBrandColor-1000 focus:outline-none text-lg placeholder:uppercase"
       value={value}
       onChange={onchange}
       maxLength={maxlength}
