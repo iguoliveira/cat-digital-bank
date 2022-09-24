@@ -1,5 +1,14 @@
 const URL = "http://localhost:3000/"
 
+export const GET = async (endpoint) => {
+    const rawRes = await fetch(URL + endpoint)
+    if (!rawRes.ok) {
+        throw new Error(rawRes.statusText)
+    }else{
+        return rawRes.json()
+    }
+}
+
 export const POST = (endpoint, dataToSend) => {
     fetch(URL + endpoint, {
         method: 'POST',
@@ -18,10 +27,10 @@ export const AUTH = async (dataToSend) => {
         body: JSON.stringify(dataToSend)
     })
     const res = await responseRaw.json()
-    
-    if(res.statusCode == 401) {
-        return {ok: false}
+
+    if (res.statusCode == 401) {
+        return { ok: false }
     }
 
-    return {ok: true, user: res.user}
+    return { ok: true, user: res.user }
 }

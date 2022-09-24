@@ -12,18 +12,18 @@ export const Login = () => {
   const [password, setPassword] = useState("");
 
   const notifyStyle = {
-    position:'left-top',
-    timeout: 1500,
+    position: 'left-top',
+    timeout: 1000,
   }
 
   const navigate = useNavigate()
 
   const LoginUser = async (event) => {
     event.preventDefault();
-    let user = await AUTH({username: cpf, password: password})
-    if(user.ok){
+    let user = await AUTH({ username: cpf, password: password })
+    if (user.ok) {
       Notify.success(`Bem Vindo ${user.user.name}!`, notifyStyle);
-      navigate('/')
+      navigate("/user/id:" + user.user.id, { state: { id: user.user.id } })
     } else {
       Notify.failure("Credenciais Invalidas!", notifyStyle);
     }
