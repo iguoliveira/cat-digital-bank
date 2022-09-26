@@ -3,6 +3,7 @@ import { GET } from "../services/api";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
 import { CardBack } from "../components/bankCard/CardBack";
+import { CardFront } from "../components/bankCard/CardFront";
 
 export const UserProfile = () => {
   const [apiresult, setApiresult] = useState([]);
@@ -25,7 +26,7 @@ export const UserProfile = () => {
                   FOTO
                 </div>
               </div>
-              <div className="mt-4">
+              <div className="mt-4 mb-20">
                 <div className="font-bold text-xl">{item.name}</div>
                 <div>Sex: {item.sex == "M" ? "Male" : "Female"}</div>
                 <div>
@@ -35,7 +36,8 @@ export const UserProfile = () => {
                   y'o
                 </div>
               </div>
-              <div>
+              <div className="space-y-3">
+                <CardFront />
                 <CardBack />
               </div>
             </div>
