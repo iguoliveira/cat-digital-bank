@@ -1,9 +1,9 @@
 export const setSession = (userData) => {
-    localStorage = localStorage.setItem('session', JSON.stringify(userData))
+    localStorage.setItem('session', JSON.stringify(userData))
 }
 
 export const removeSession = () => {
-    localStorage = localStorage.removeItem('session')
+    localStorage.removeItem('session')
 }
 
 export const getSession = () => {

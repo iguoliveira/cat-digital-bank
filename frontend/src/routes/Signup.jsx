@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { POST } from "../services/api";
 import { SignupValidation } from "../services/FormValidation";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Notify } from "notiflix";
 import { InputText } from "../components/input/InputText";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
 import { FormCard } from "../components/FormCard";
+import { getSession } from "../services/session"
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -27,7 +28,12 @@ export const Signup = () => {
     password: password,
   };
 
+  const navigate = useNavigate()
+
   useEffect(() => {
+    let userSession = getSession()
+    userSession && navigate(`/user/id:${userSession.id}`)
+
     if (location.state) {
       setName(location.state.nameValue);
       setEmail(location.state.emailValue);

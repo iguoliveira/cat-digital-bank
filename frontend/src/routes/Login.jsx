@@ -6,6 +6,8 @@ import { Notify } from "notiflix";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
 import { FormCard } from "../components/FormCard";
+import { setSession, getSession } from "../services/session"
+import { useEffect } from "react";
 
 export const Login = () => {
   const [cpf, setCpf] = useState("");
@@ -17,11 +19,21 @@ export const Login = () => {
   }
 
   const navigate = useNavigate()
+  let userData = {
+    username: cpf,
+    password: password,
+  }
+
+  useEffect(() => {
+    let userSession = getSession()
+    userSession && navigate(`/user/id:${userSession.id}`)
+  })
 
   const LoginUser = async (event) => {
     event.preventDefault();
-    let user = await AUTH({ username: cpf, password: password })
+    let user = await AUTH(userData)
     if (user.ok) {
+      setSession(user.user)
       Notify.success(`Bem Vindo ${user.user.name}!`, notifyStyle);
       navigate("/user/id:" + user.user.id, { state: { id: user.user.id } })
     } else {

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LinkItem } from "./link/LinkItem";
+import { IoLogOut } from "react-icons/io5";
 
-export const Hamburguer = () => {
+export const Hamburguer = ({ session, logout }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
@@ -40,17 +41,32 @@ export const Hamburguer = () => {
               <LinkItem name="Home" />
             </Link>
           </li>
-          <li className="border-b border-gray-400 my-8 uppercase">
-            <Link to="/signup">
-              <LinkItem name="Sign Up" />
-            </Link>
-          </li>
+          {!session ? (
+            <li className="border-b border-gray-400 my-8 uppercase">
+              <Link to="/signup">
+                <LinkItem name="Sign Up" />
+              </Link>
+            </li>
+          ) : (
+            <li className="border-b border-gray-400 my-8 uppercase">
+              <Link to="/signup">
+                <LinkItem name="Profile" />
+              </Link>
+            </li>
+          )}
           <li className="border-b border-gray-400 my-8 uppercase">
             <LinkItem name="Download" />
           </li>
           <li className="border-b border-gray-400 my-8 uppercase">
             <LinkItem name="About" />
           </li>
+          {session && (
+            <li className="my-8 uppercase">
+              <Link to="/" onClick={logout}>
+                <IoLogOut size={"40"} />
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
       <style>{`
