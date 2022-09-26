@@ -1,6 +1,7 @@
 import { SearchBar } from "./searchbar/SearchBar";
 import { LinkItem } from "./LinkItem";
 import { IoLogOut } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export const LinkContainer = ({ session }) => {
   return !session ? (

@@ -42,11 +42,18 @@ export const Hamburguer = ({ session, logout }) => {
             </Link>
           </li>
           {!session ? (
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link to="/signup">
-                <LinkItem name="Sign Up" />
-              </Link>
-            </li>
+            <>
+              <li className="border-b border-gray-400 my-8 uppercase">
+                <Link to="/login">
+                  <LinkItem name="Login" />
+                </Link>
+              </li>
+              <li className="border-b border-gray-400 my-8 uppercase">
+                <Link to="/signup">
+                  <LinkItem name="Sign Up" />
+                </Link>
+              </li>
+            </>
           ) : (
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link to="/signup">

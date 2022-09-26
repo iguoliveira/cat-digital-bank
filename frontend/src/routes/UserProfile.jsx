@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { GET } from '../services/api'
 import { useParams } from "react-router-dom"
+import { Navbar } from "../components/navbar/Navbar";
 
 export const UserProfile = () => {
     const [apiresult, setApiresult] = useState([])
@@ -14,6 +15,7 @@ export const UserProfile = () => {
     }, [])
     return (
         <div>
+            <Navbar />
             {apiresult.map((item, index) => (
                 id == item.id
                 &&
