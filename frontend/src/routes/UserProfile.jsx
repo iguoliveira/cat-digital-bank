@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { GET } from "../services/api";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
-import { BankCard } from "../components/BankCard";
+import { CardBack } from "../components/bankCard/CardBack";
 
 export const UserProfile = () => {
   const [apiresult, setApiresult] = useState([]);
@@ -35,7 +35,9 @@ export const UserProfile = () => {
                   y'o
                 </div>
               </div>
-              <BankCard />
+              <div>
+                <CardBack />
+              </div>
             </div>
           )
       )}
