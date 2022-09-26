@@ -15,7 +15,8 @@ module.exports = {
           500: "#eb6ed0",
         },
         cardTheme: {
-          1000: "#e4e4e4",
+          1000: "#111111",
+          500: "#e4e4e4",
         },
       },
       width: {
