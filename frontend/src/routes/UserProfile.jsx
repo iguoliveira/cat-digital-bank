@@ -18,13 +18,13 @@ export const UserProfile = () => {
       {apiresult.map(
         (item, index) =>
           id == item.id && (
-            <div key={index}>
+            <div key={index} className="px-4">
               <div className="bg-black h-60 relative">
-                <div className="bg-pink-100 absolute bottom-0 left-5 h-24 w-24">
+                <div className="bg-pink-100 absolute bottom-0 h-24 w-24">
                   FOTO
                 </div>
               </div>
-              <div className="ml-10 mt-4">
+              <div className="mt-4">
                 <div className="font-bold text-xl">{item.name}</div>
                 <div>Sex: {item.sex == "M" ? "Male" : "Female"}</div>
                 <div>
@@ -32,6 +32,35 @@ export const UserProfile = () => {
                   {new Date().getFullYear() -
                     parseInt(item.birthDay.split("-")[0])}{" "}
                   y'o
+                </div>
+              </div>
+              {/* Card */}
+              <div className="bg-pink-500 rounded">
+                <div>made by @CAT bank</div>
+                <div className="bg-cardTheme-1000 py-2">&#8203;</div>
+                <div>
+                  <div>platinum</div>
+                  <div className="bg-cardTheme-1000 rounded-xl w-10 px-6 py-1">
+                    &#8203;
+                  </div>
+                </div>
+                <div>
+                  <div className="flex space-x-2">
+                    <span>5023</span>
+                    <span>9334</span>
+                    <span>3764</span>
+                    <span>9846</span>
+                  </div>
+                  <div className="flex space-x-10">
+                    <div className="flex space-x-1">
+                      <span>validade:</span>
+                      <span>02/20</span>
+                    </div>
+                    <div className="flex space-x-1">
+                      <span>CCV:</span>
+                      <span>113</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
