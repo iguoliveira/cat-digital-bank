@@ -7,7 +7,7 @@ import { InputText } from "../components/input/InputText";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
 import { FormCard } from "../components/FormCard";
-import { getSession } from "../services/session"
+import { setSession, getSession } from "../services/session";
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -28,11 +28,11 @@ export const Signup = () => {
     password: password,
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    let userSession = getSession()
-    userSession && navigate(`/user/id:${userSession.id}`)
+    let userSession = getSession();
+    userSession && navigate(`/user/id:${userSession.id}`);
 
     if (location.state) {
       setName(location.state.nameValue);
@@ -54,7 +54,8 @@ export const Signup = () => {
       )
     ) {
       Notify.success("Sucesso no registro do Usuario!");
-      POST("user/register", data);
+      POST("user/register", data)
+      navigate("/login")
     } else {
       Notify.failure("Erro no registro!");
     }
