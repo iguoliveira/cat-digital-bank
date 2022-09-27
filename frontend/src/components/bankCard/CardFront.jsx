@@ -2,17 +2,17 @@ import Mastercard from "/mastercard.png";
 
 export const CardFront = ({ name }) => {
   return (
-    <div className="bg-cardTheme-1000 rounded text-white h-48 flex items-end justify-between shadow-black shadow-sm relative w-[370px]">
+    <div className="bg-cardTheme-1000 rounded text-white h-48 flex items-end justify-between shadow-black shadow-sm relative w-[370px] overflow-auto">
       <div className="px-4 pb-4">
-        <div className="bg-[#f7e189] rounded w-10 h-8 mb-16 grid grid-cols-4 grid-rows-2">
+        <div className="bg-[#f7e189] rounded-tl-lg rounded-br-lg w-10 h-8 mb-16 grid grid-cols-4 grid-rows-2 border-yellow-700 border-2">
+          <span className="border-yellow-400 border-2 rounded-tl-md">&#8203;</span>
           <span className="border-yellow-400 border-2">&#8203;</span>
           <span className="border-yellow-400 border-2">&#8203;</span>
           <span className="border-yellow-400 border-2">&#8203;</span>
           <span className="border-yellow-400 border-2">&#8203;</span>
           <span className="border-yellow-400 border-2">&#8203;</span>
           <span className="border-yellow-400 border-2">&#8203;</span>
-          <span className="border-yellow-400 border-2">&#8203;</span>
-          <span className="border-yellow-400 border-2">&#8203;</span>
+          <span className="border-yellow-400 border-2 rounded-br-md">&#8203;</span>
         </div>
         <div className="text-md font-bold absolute z-40 bottom-0 pb-4">
           {name}
