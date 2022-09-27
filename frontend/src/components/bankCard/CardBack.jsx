@@ -2,7 +2,7 @@ import Mastercard from "/mastercard.png";
 
 export const CardBack = ({ type, number, val, cod }) => {
   return (
-    <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm">
+    <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm w-[370px]">
       <span className="text-[5px] flex item-center ml-2">
         made by @CAT Bank
       </span>

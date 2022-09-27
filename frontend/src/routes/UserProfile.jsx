@@ -36,9 +36,16 @@ export const UserProfile = () => {
                   y'o
                 </div>
               </div>
-              <div className="space-y-3">
-                <CardFront name={item.name} />
-                <CardBack type={"gold"} number={"5612 6058 1504 0495"} val={"05/25"} cod={"561"} />
+              <div className="flex items-center justify-center">
+                <div className="space-y-4 sm:bg-white sm:shadow-inner sm:shadow-black sm:w-[500px] flex flex-col items-center justify-center sm:p-8">
+                  <CardFront name={item.name} />
+                  <CardBack
+                    type={"gold"}
+                    number={"5612 6058 1504 0495"}
+                    val={"05/25"}
+                    cod={"561"}
+                  />
+                </div>
               </div>
             </div>
           )
