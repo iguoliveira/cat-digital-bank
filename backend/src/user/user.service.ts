@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import { USER_REPOSITORY } from "../constants"
 import * as bcrypt from 'bcrypt'
+
 @Injectable()
 export class UserService {
   constructor(
@@ -23,6 +24,7 @@ export class UserService {
     user.birthDay = createUserDto.birthDay
     user.sex = createUserDto.sex
     user.password = bcrypt.hashSync(createUserDto.password, 8)
+    user.card = createUserDto.card
     return await this.userRepository.save(user)
   }
 

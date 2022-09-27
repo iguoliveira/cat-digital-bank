@@ -1,0 +1,29 @@
+import { Inject, Injectable } from '@nestjs/common';
+import { CreateCardDto } from './dto/create-card.dto';
+import { CARD_REPOSITORY } from "../constants"
+import { Repository } from 'typeorm';
+import { Card } from './entities/card.entity';
+import * as bcrypt from 'bcrypt'
+
+@Injectable()
+export class CardService {
+  constructor(
+    @Inject(CARD_REPOSITORY)
+    private cardRepository: Repository<Card>,
+  ) { }
+
+  async findAll(): Promise<Card[]> {
+    return this.cardRepository.find()
+  }
+
+  async create(createCardDto: CreateCardDto): Promise<Card> {
+    let card = new Card()
+    card.number = createCardDto.number
+    card.code = createCardDto.code
+    card.password = bcrypt.hashSync(createCardDto.password, 8)
+    card.type = createCardDto.type
+    card.validate = createCardDto.validate
+    card.user = createCardDto.user
+    return await this.cardRepository.save(card)
+  }
+}

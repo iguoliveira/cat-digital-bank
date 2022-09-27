@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, ManyToMany } from "typeorm";
-import { User } from "./user.entity";
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from "typeorm";
+import { User } from "src/user/entities/user.entity";
 
 @Entity()
 export class Card {
@@ -18,7 +18,10 @@ export class Card {
     @Column()
     type: string
 
-    @ManyToMany(() => User, user => user.card, {onDelete: 'CASCADE'})
+    @Column({ length: 255 })
+    password: string
+
+    @ManyToOne(() => User, user => user.card, {onDelete: 'CASCADE'})
     @JoinColumn()
     user: User
 }

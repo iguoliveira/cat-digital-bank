@@ -6,6 +6,7 @@ import { Homepage } from "./routes/Homepage";
 import { Login } from "./routes/Login";
 import { Signup } from "./routes/Signup";
 import { UserProfile } from "./routes/UserProfile";
+import { CardTesteForm } from "./routes/CardTesteForm";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: 'user/id::id',
     element: <UserProfile />,
+  },
+  {
+    path: 'card',
+    element: <CardTesteForm />,
   }
 ]);
 
