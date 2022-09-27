@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, ManyToMany } from "typeorm";
+import { User } from "./user.entity";
 
 @Entity()
 export class Card {
@@ -16,4 +17,8 @@ export class Card {
 
     @Column()
     type: string
+
+    @ManyToMany(() => User, user => user.card, {onDelete: 'CASCADE'})
+    @JoinColumn()
+    user: User
 }
