@@ -37,8 +37,8 @@ export const UserProfile = () => {
                 </div>
               </div>
               <div className="space-y-3">
-                <CardFront />
-                <CardBack />
+                <CardFront name={item.name} />
+                <CardBack type={"gold"} number={"5612 6058 1504 0495"} val={"05/25"} cod={"561"} />
               </div>
             </div>
           )
