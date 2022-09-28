@@ -1,6 +1,6 @@
 import Mastercard from "/mastercard.png";
 
-export const CardBack = ({ type, number, val, cod }) => {
+export const CardBack = ({ category, number, val, cod }) => {
   return (
     <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm w-[22rem]">
       <span className="text-[5px] flex item-center ml-2">
@@ -9,7 +9,7 @@ export const CardBack = ({ type, number, val, cod }) => {
       <div className="bg-cardTheme-500 py-2">&#8203;</div>
       <div className="px-4">
         <div className="w-16 flex flex-col items-center mt-2 space-y-1">
-          <div className="text-xs uppercase">{type}</div>
+          <div className="text-xs uppercase">{category}</div>
           <div className="bg-cardTheme-500 rounded-xl w-10 px-8 py-1">
             &#8203;
           </div>

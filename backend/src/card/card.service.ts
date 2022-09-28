@@ -22,6 +22,7 @@ export class CardService {
     card.code = createCardDto.code
     card.password = createCardDto.password
     card.type = createCardDto.type
+    card.category = createCardDto.category
     card.validate = createCardDto.validate
     card.user = createCardDto.user
     return await this.cardRepository.save(card)

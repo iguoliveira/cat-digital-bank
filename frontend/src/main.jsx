@@ -6,7 +6,7 @@ import { Homepage } from "./routes/Homepage";
 import { Login } from "./routes/Login";
 import { Signup } from "./routes/Signup";
 import { UserProfile } from "./routes/UserProfile";
-import { CardTesteForm } from "./routes/CardTesteForm";
+import { CreateCard } from "./routes/CreateCard"
 
 const router = createBrowserRouter([
   {
@@ -26,9 +26,9 @@ const router = createBrowserRouter([
     element: <UserProfile />,
   },
   {
-    path: 'card',
-    element: <CardTesteForm />,
-  }
+    path: 'user/id::id/registerCard',
+    element: <CreateCard />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -4,7 +4,8 @@ export class CreateCardDto {
     number: string
     validate: Date
     code: string
-    type: string
+    category: string
     password: string
+    type: string
     user: User
 }

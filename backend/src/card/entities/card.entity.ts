@@ -18,6 +18,9 @@ export class Card {
     @Column()
     type: string
 
+    @Column()
+    category: string
+
     @Column({ length: 255 })
     password: string
 

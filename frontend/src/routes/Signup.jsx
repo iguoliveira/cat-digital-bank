@@ -54,8 +54,8 @@ export const Signup = () => {
       )
     ) {
       Notify.success("Sucesso no registro do Usuario!");
-      POST("user/register", data)
-      navigate("/login")
+      POST("user/register", data);
+      navigate("/login");
     } else {
       Notify.failure("Erro no registro!");
     }

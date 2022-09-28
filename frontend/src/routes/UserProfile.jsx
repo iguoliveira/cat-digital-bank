@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { GET } from "../services/api";
+import { getSession } from "../services/session";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
 import { CardBack } from "../components/bankCard/CardBack";
@@ -9,8 +10,11 @@ export const UserProfile = () => {
   const [apiresult, setApiresult] = useState([]);
   const [cardresult, setCardresult] = useState([]);
   let { id } = useParams();
+  let session;
 
   useEffect(() => {
+    session = getSession();
+
     GET("user/all").then((res) => {
       setApiresult(res);
     }),
@@ -43,15 +47,17 @@ export const UserProfile = () => {
               </div>
               <div className="flex items-center justify-center">
                 <div className="space-y-4 sm:bg-white sm:shadow-inner sm:shadow-black sm:w-[500px] flex flex-col items-center justify-center sm:p-8">
-                  <CardFront name={item.name} />
-                  {cardresult.map((item, index) => (
-                    <CardBack
-                      key={index}
-                      type={item.type}
-                      number={item.number}
-                      val={item.validate}
-                      cod={item.code}
-                    />
+                  {cardresult.map((card, key) => (
+                    <div key={key}>
+                      {console.log(card)}
+                      <CardFront name={item.name} />
+                      <CardBack
+                        type={card.category}
+                        number={card.number}
+                        val={card.validate}
+                        cod={card.code}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
