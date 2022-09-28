@@ -3,7 +3,6 @@ import { CreateCardDto } from './dto/create-card.dto';
 import { CARD_REPOSITORY } from "../constants"
 import { Repository } from 'typeorm';
 import { Card } from './entities/card.entity';
-import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class CardService {
@@ -23,7 +22,7 @@ export class CardService {
     card.password = createCardDto.password
     card.type = createCardDto.type
     card.category = createCardDto.category
-    card.validate = createCardDto.validate
+    card.expiration = createCardDto.expiration
     card.user = createCardDto.user
     return await this.cardRepository.save(card)
   }

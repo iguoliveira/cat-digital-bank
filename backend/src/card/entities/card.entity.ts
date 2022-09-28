@@ -10,7 +10,7 @@ export class Card {
     number: string
 
     @Column()
-    validate: Date
+    expiration: string
 
     @Column({ length: 3 })
     code: string
@@ -24,7 +24,7 @@ export class Card {
     @Column({ length: 255 })
     password: string
 
-    @ManyToOne(() => User, user => user.card, {onDelete: 'CASCADE'})
+    @ManyToOne(type => User, {onDelete: 'CASCADE'})
     @JoinColumn()
     user: User
 }
