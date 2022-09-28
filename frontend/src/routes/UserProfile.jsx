@@ -7,13 +7,18 @@ import { CardFront } from "../components/bankCard/CardFront";
 
 export const UserProfile = () => {
   const [apiresult, setApiresult] = useState([]);
+  const [cardresult, setCardresult] = useState([]);
   let { id } = useParams();
 
   useEffect(() => {
     GET("user/all").then((res) => {
       setApiresult(res);
-    });
+    }),
+      GET("card/all").then((res) => {
+        setCardresult(res);
+      });
   }, []);
+
   return (
     <div>
       <Navbar />
@@ -39,12 +44,15 @@ export const UserProfile = () => {
               <div className="flex items-center justify-center">
                 <div className="space-y-4 sm:bg-white sm:shadow-inner sm:shadow-black sm:w-[500px] flex flex-col items-center justify-center sm:p-8">
                   <CardFront name={item.name} />
-                  <CardBack
-                    type={"gold"}
-                    number={"5612 6058 1504 0495"}
-                    val={"05/25"}
-                    cod={"561"}
-                  />
+                  {cardresult.map((item, index) => (
+                    <CardBack
+                      key={index}
+                      type={item.type}
+                      number={item.number}
+                      val={item.validate}
+                      cod={item.code}
+                    />
+                  ))}
                 </div>
               </div>
             </div>

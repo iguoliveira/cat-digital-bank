@@ -2,7 +2,7 @@ import Mastercard from "/mastercard.png";
 
 export const CardBack = ({ type, number, val, cod }) => {
   return (
-    <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm w-[370px]">
+    <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm w-[22rem]">
       <span className="text-[5px] flex item-center ml-2">
         made by @CAT Bank
       </span>
@@ -20,7 +20,7 @@ export const CardBack = ({ type, number, val, cod }) => {
             <div className="flex space-x-10">
               <div className="flex items-center space-x-1">
                 <span className="text-[10px]">val:</span>
-                <span>{val}</span>
+                <span>{val.split("-")[1]}</span><span>/</span><span>{val.split("-")[0]}</span>
               </div>
               <div className="flex items-center space-x-1">
                 <span className="text-[10px]">cod:</span>

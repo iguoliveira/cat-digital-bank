@@ -20,7 +20,7 @@ export class CardService {
     let card = new Card()
     card.number = createCardDto.number
     card.code = createCardDto.code
-    card.password = bcrypt.hashSync(createCardDto.password, 8)
+    card.password = createCardDto.password
     card.type = createCardDto.type
     card.validate = createCardDto.validate
     card.user = createCardDto.user
