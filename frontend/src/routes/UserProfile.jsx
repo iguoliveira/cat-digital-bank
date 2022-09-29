@@ -48,8 +48,8 @@ export const UserProfile = () => {
               <div className="flex items-center justify-center">
                 <div className="space-y-4 sm:bg-white sm:shadow-inner sm:shadow-black sm:w-[500px] flex flex-col items-center justify-center sm:p-8">
                   {cardresult.map((card, key) => (
+                    item.id == card.user.id &&
                     <div key={key}>
-                      {console.log(card.user.name)}
                       <CardFront name={item.name} />
                       <CardBack
                         category={card.category}
