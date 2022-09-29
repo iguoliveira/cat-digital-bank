@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Card } from 'src/card/entities/card.entity'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
 
 @Entity()
 export class User {
@@ -22,4 +23,7 @@ export class User {
 
     @Column({ length: 255 })
     password: string
+
+    @OneToMany(() => Card, card => card.user)
+    card: Card[]
 }

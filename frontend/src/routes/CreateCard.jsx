@@ -21,7 +21,7 @@ export const CreateCard = () => {
 
   useEffect(() => {
     session = getSession()
-
+    console.log(session)
     !session && navigate('/')
   })
 
@@ -35,11 +35,10 @@ export const CreateCard = () => {
       type: "F",
       category:"P", //Silver, Gold, Platinum, Diamond, Black
       password: password,
-      userId: session.id,
+      user: session,
     }
-
     POST("card/register", data)
-    navigate(`/user/id:${session.id}`)
+    // navigate(`/user/id:${session.id}`)
   }
 
   return (

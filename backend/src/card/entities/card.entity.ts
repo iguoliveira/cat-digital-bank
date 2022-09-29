@@ -24,7 +24,7 @@ export class Card {
     @Column({ length: 255 })
     password: string
 
-    @ManyToOne(type => User, {onDelete: 'CASCADE'})
-    @JoinColumn()
+    @ManyToOne(() => User, (user) => user.card, { nullable: false, eager: true })
+    @JoinColumn({name: "user_id"})
     user: User
 }

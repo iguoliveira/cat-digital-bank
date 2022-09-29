@@ -1,3 +1,5 @@
+import { Card } from 'src/card/entities/card.entity'
+
 export class CreateUserDto {
     name: string
     email: string
@@ -5,4 +7,5 @@ export class CreateUserDto {
     birthDay: Date
     sex?: string
     password: string
+    card: Card[]
 }

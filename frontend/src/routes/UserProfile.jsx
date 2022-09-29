@@ -49,12 +49,12 @@ export const UserProfile = () => {
                 <div className="space-y-4 sm:bg-white sm:shadow-inner sm:shadow-black sm:w-[500px] flex flex-col items-center justify-center sm:p-8">
                   {cardresult.map((card, key) => (
                     <div key={key}>
-                      {console.log(card)}
+                      {console.log(card.user.name)}
                       <CardFront name={item.name} />
                       <CardBack
-                        type={card.category}
+                        category={card.category}
                         number={card.number}
-                        val={card.validate}
+                        exp={card.validate}
                         cod={card.code}
                       />
                     </div>
