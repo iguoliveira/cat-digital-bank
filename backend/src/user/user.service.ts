@@ -25,6 +25,7 @@ export class UserService {
     user.sex = createUserDto.sex
     user.password = bcrypt.hashSync(createUserDto.password, 8)
     user.card = createUserDto.card
+    user.image = createUserDto.image
     return await this.userRepository.save(user)
   }
 

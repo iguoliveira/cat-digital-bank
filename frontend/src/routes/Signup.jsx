@@ -7,7 +7,7 @@ import { InputText } from "../components/input/InputText";
 import { Navbar } from "../components/navbar/Navbar";
 import { Button } from "../components/input/Button";
 import { FormCard } from "../components/FormCard";
-import { setSession, getSession } from "../services/session";
+import { getSession } from "../services/session";
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -18,6 +18,7 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
   const location = useLocation();
+  const [file, setSelectedFile] = useState(null);
 
   var data = {
     name: name,
@@ -26,6 +27,7 @@ export const Signup = () => {
     birthDay: birthday,
     cpf: cpf,
     password: password,
+    file: file,
   };
 
   const navigate = useNavigate();
@@ -113,6 +115,10 @@ export const Signup = () => {
               type="date"
               value={birthday}
               onchange={(evt) => setBirthday(evt.target.value)}
+            />
+            <input
+              type="file"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
             />
             <Button>Sign up</Button>
           </form>

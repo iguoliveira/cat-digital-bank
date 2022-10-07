@@ -1,4 +1,5 @@
 import { Card } from 'src/card/entities/card.entity'
+import { Image } from 'src/image/entities/image.entity'
 
 export class CreateUserDto {
     name: string
@@ -7,6 +8,6 @@ export class CreateUserDto {
     birthDay: Date
     sex?: string
     password: string
-    image: string
+    image: Image[]
     card: Card[]
 }

@@ -1,4 +1,5 @@
 import { Card } from 'src/card/entities/card.entity'
+import { Image } from 'src/image/entities/image.entity'
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
 
 @Entity()
@@ -24,9 +25,9 @@ export class User {
     @Column({ length: 255 })
     password: string
 
-    @Column({ length: 255 })
-    image: string
-
     @OneToMany(() => Card, card => card.user)
     card: Card[]
+
+    @OneToMany(() => Image, image => image.user)
+    image: Image[]
 }
