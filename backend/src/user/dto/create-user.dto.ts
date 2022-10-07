@@ -7,5 +7,6 @@ export class CreateUserDto {
     birthDay: Date
     sex?: string
     password: string
+    image: string
     card: Card[]
 }

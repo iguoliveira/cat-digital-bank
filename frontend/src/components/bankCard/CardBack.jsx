@@ -1,15 +1,15 @@
 import Mastercard from "/mastercard.png";
 
-export const CardBack = ({ category, number, exp, cod }) => {
+export const CardBack = ({ category, number, expiration, code }) => {
   return (
-    <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm w-[22rem]">
+    <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm w-[370px]">
       <span className="text-[5px] flex item-center ml-2">
         made by @CAT Bank
       </span>
       <div className="bg-cardTheme-500 py-2">&#8203;</div>
       <div className="px-4">
         <div className="w-16 flex flex-col items-center mt-2 space-y-1">
-          <div className="text-xs uppercase">{category}</div>
+          <div className="text-xs uppercase">{category == "P" ? "Platinum" : category == "G" ? "Gold" : "Silver"}</div>
           <div className="bg-cardTheme-500 rounded-xl w-10 px-8 py-1">
             &#8203;
           </div>
@@ -20,11 +20,11 @@ export const CardBack = ({ category, number, exp, cod }) => {
             <div className="flex space-x-10">
               <div className="flex items-center space-x-1">
                 <span className="text-[10px]">exp:</span>
-                <span>exp</span>
+                <span>{expiration}</span>
               </div>
               <div className="flex items-center space-x-1">
                 <span className="text-[10px]">cod:</span>
-                <span>{cod}</span>
+                <span>{code}</span>
               </div>
             </div>
           </div>

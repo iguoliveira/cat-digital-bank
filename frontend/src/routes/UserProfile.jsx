@@ -47,18 +47,20 @@ export const UserProfile = () => {
               </div>
               <div className="flex items-center justify-center">
                 <div className="space-y-4 sm:bg-white sm:shadow-inner sm:shadow-black sm:w-[500px] flex flex-col items-center justify-center sm:p-8">
-                  {cardresult.map((card, key) => (
-                    item.id == card.user.id &&
-                    <div key={key}>
-                      <CardFront name={item.name} />
-                      <CardBack
-                        category={card.category}
-                        number={card.number}
-                        exp={card.validate}
-                        cod={card.code}
-                      />
-                    </div>
-                  ))}
+                  {cardresult.map(
+                    (card, key) =>
+                      item.id == card.user.id && (
+                        <div key={key} className="space-y-10">
+                          <CardFront name={item.name} />
+                          <CardBack
+                            category={card.category}
+                            number={card.number}
+                            expiration={card.expiration}
+                            code={card.code}
+                          />
+                        </div>
+                      )
+                  )}
                 </div>
               </div>
             </div>

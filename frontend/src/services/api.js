@@ -9,6 +9,17 @@ export const GET = async (endpoint) => {
     }
 }
 
+export const POSTIMAGE = (endpoint, dataToSend) => {
+    fetch(URL + endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: dataToSend
+    })
+        .then((res) => res.json())
+        .then((data) => { return data })
+        .catch((err) => console.log(err))
+}
+
 export const POST = (endpoint, dataToSend) => {
     fetch(URL + endpoint, {
         method: 'POST',

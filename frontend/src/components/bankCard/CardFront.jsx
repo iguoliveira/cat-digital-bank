@@ -14,7 +14,7 @@ export const CardFront = ({ name }) => {
           <span className="border-yellow-400 border-2">&#8203;</span>
           <span className="border-yellow-400 border-2 rounded-br-md">&#8203;</span>
         </div>
-        <div className="text-md font-bold absolute z-40 bottom-0 pb-4">
+        <div className="text-md font-bold absolute z-40 bottom-0 pb-4 uppercase">
           {name}
         </div>
       </div>

@@ -7,6 +7,7 @@ import { Login } from "./routes/Login";
 import { Signup } from "./routes/Signup";
 import { UserProfile } from "./routes/UserProfile";
 import { CreateCard } from "./routes/CreateCard"
+import { Teste } from "./routes/teste"
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: 'user/id::id/registerCard',
     element: <CreateCard />,
+  },
+  {
+    path: 'testeteste',
+    element: <Teste />,
   },
 ]);
 

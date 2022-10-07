@@ -24,6 +24,9 @@ export class User {
     @Column({ length: 255 })
     password: string
 
+    @Column({ length: 255 })
+    image: string
+
     @OneToMany(() => Card, card => card.user)
     card: Card[]
 }
