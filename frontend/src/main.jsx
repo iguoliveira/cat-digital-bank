@@ -8,27 +8,53 @@ import { Signup } from "./routes/Signup";
 import { UserProfile } from "./routes/UserProfile";
 import { CreateCard } from "./routes/CreateCard";
 import { Teste } from "./routes/teste";
+import { Navbar } from "./components/navbar/Navbar";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: (
+      <>
+        <Navbar />
+        <Homepage />
+      </>
+    ),
   },
   {
     path: "signup",
-    element: <Signup />,
+    element: (
+      <>
+        <Navbar />
+        <Signup />
+      </>
+    ),
   },
   {
     path: "login",
-    element: <Login />,
+    element: (
+      <>
+        <Navbar />
+        <Login />
+      </>
+    ),
   },
   {
     path: "user/id::id",
-    element: <UserProfile />,
+    element: (
+      <>
+        <Navbar />
+        <UserProfile />
+      </>
+    ),
   },
   {
     path: "user/id::id/registerCard",
-    element: <CreateCard />,
+    element: (
+      <>
+        <Navbar />
+        <CreateCard />
+      </>
+    ),
   },
   {
     path: "testeteste",

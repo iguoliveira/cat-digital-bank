@@ -18,7 +18,6 @@ export const Homepage = () => {
 
   return (
     <div className="h-screen w-screen overflow-auto bg-mainBrandColor-1000">
-      <Navbar />
       <div className="flex flex-col justify-between">
         <div className="h-screen flex items-center justify-center">
           {!session && <Download />}

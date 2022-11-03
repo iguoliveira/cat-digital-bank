@@ -68,12 +68,6 @@ export const Hamburguer = ({ user, logout }) => {
               </li>
             </>
           )}
-          <li className="border-b border-gray-400 my-8 uppercase">
-            <LinkItem name="Download" />
-          </li>
-          <li className="border-b border-gray-400 my-8 uppercase">
-            <LinkItem name="About" />
-          </li>
           {user && (
             <li className="my-8 uppercase">
               <Link to="/" onClick={logout}>
