@@ -6,8 +6,8 @@ import { Homepage } from "./routes/Homepage";
 import { Login } from "./routes/Login";
 import { Signup } from "./routes/Signup";
 import { UserProfile } from "./routes/UserProfile";
-import { CreateCard } from "./routes/CreateCard"
-import { Teste } from "./routes/teste"
+import { CreateCard } from "./routes/CreateCard";
+import { Teste } from "./routes/teste";
 
 const router = createBrowserRouter([
   {
@@ -23,15 +23,15 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: 'user/id::id',
+    path: "user/id::id",
     element: <UserProfile />,
   },
   {
-    path: 'user/id::id/registerCard',
+    path: "user/id::id/registerCard",
     element: <CreateCard />,
   },
   {
-    path: 'testeteste',
+    path: "testeteste",
     element: <Teste />,
   },
 ]);

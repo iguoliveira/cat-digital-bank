@@ -7,8 +7,16 @@
   padding: 0;
 }
 
-@layer components{
-  .defaultShadow{
-    @apply shadow-black shadow-md
+@layer components {
+  .defaultShadow {
+    @apply shadow-black shadow-md;
+  }
+
+  .showMenuNav {
+    @apply absolute w-full h-screen top-0 left-0 bg-white z-50 flex flex-col justify-evenly items-center;
+  }
+
+  .hideMenuNav {
+    @apply hidden;
   }
 }

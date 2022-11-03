@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { LinkItem } from "./link/LinkItem";
 import { IoLogOut } from "react-icons/io5";
 
-export const Hamburguer = ({ session, logout }) => {
+export const Hamburguer = ({ user, logout }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <section className="MOBILE-MENU flex lg:hidden">
+    <section className="MOBILE-MENU flex lg:hidden z-50">
       <div
         className="HAMBURGER-ICON space-y-2 cursor-pointer"
         onClick={() => setIsNavOpen((prev) => !prev)}
@@ -41,7 +41,7 @@ export const Hamburguer = ({ session, logout }) => {
               <LinkItem name="Home" />
             </Link>
           </li>
-          {!session ? (
+          {!user ? (
             <>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link to="/login">
@@ -55,11 +55,18 @@ export const Hamburguer = ({ session, logout }) => {
               </li>
             </>
           ) : (
-            <li className="border-b border-gray-400 my-8 uppercase">
-              <Link to="/signup">
-                <LinkItem name="Profile" />
-              </Link>
-            </li>
+            <>
+              <li className="border-b border-gray-400 my-8 uppercase">
+                <Link to="/signup">
+                  <LinkItem name="Profile" />
+                </Link>
+              </li>
+              <li className="border-b border-gray-400 my-8 uppercase">
+                <Link to={`/user/id:${user && user.id}/registerCard`}>
+                  <LinkItem name="Card" />
+                </Link>
+              </li>
+            </>
           )}
           <li className="border-b border-gray-400 my-8 uppercase">
             <LinkItem name="Download" />
@@ -67,7 +74,7 @@ export const Hamburguer = ({ session, logout }) => {
           <li className="border-b border-gray-400 my-8 uppercase">
             <LinkItem name="About" />
           </li>
-          {session && (
+          {user && (
             <li className="my-8 uppercase">
               <Link to="/" onClick={logout}>
                 <IoLogOut size={"40"} />
@@ -76,25 +83,6 @@ export const Hamburguer = ({ session, logout }) => {
           )}
         </ul>
       </div>
-      <style>{`
-      .hideMenuNav {
-        display: none;
-      }
-      .showMenuNav {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        background: white;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-      }
-    `}</style>
     </section>
   );
 };

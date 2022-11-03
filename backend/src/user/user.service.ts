@@ -15,7 +15,7 @@ export class UserService {
   async findAll(): Promise<User[]> {
     return this.userRepository.find();
   }
-  
+
   async create(createUserDto: CreateUserDto): Promise<User> {
     let user = new User()
     user.name = createUserDto.name

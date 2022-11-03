@@ -25,6 +25,6 @@ export class Card {
     password: string
 
     @ManyToOne(() => User, (user) => user.card, { nullable: false, eager: true })
-    @JoinColumn({name: "user_id"})
+    @JoinColumn({ name: "user_id" })
     user: User
 }

@@ -7,7 +7,7 @@ module.exports = {
         mainBrandColor: {
           1000: "#8257E5",
           900: "#8e66ec",
-          500: "#a88aed"
+          500: "#a88aed",
         },
         secondBrandColor: "#52D053",
         pink: {
