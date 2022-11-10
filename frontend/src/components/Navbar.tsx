@@ -7,9 +7,9 @@ export const Navbar = () => {
     <nav>
       <img src={Logo} className="logo" />
       <div className="container-links">
-        <Link to="/">Home</Link>
-        <Link to="/">Login</Link>
-        <Link to="/">Sign up</Link>
+        <Link to="/" className="links">Home</Link>
+        <Link to="/" className="links">Login</Link>
+        <Link to="/" className="sign-up">Sign up</Link>
       </div>
     </nav>
   );

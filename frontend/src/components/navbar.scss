@@ -5,7 +5,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: $main-1000;
-  padding: 15px 20px 15px 20px;
+  padding: 1rem 1.2rem;
 
   & > .logo {
     width: $logo-width;
@@ -13,9 +13,10 @@ nav {
 
   & > .container-links {
     display: flex;
+    align-items: center;
     gap: 2rem;
 
-    & > a {
+    & > .links {
       text-decoration: none;
       font-weight: bold;
       font-size: 1.2rem;
@@ -24,6 +25,20 @@ nav {
 
       &:hover {
         opacity: 0.7;
+      }
+    }
+
+    & > .sign-up {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.8rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
       }
     }
   }
