@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import "./home.scss";
 
 export const Home = () => {
+  document.title = 'Homepage'
+
   return (
     <section className="home-content">
       <article className="first-section">
