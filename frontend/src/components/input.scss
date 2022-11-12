@@ -1,0 +1,31 @@
+@import "../variables.scss";
+
+.input-content {
+  display: flex;
+
+  &:focus-within {
+    & > span {
+      transition: 250ms ease;
+      background-color: $main-1000;
+      color: white;
+      border-color: $main-1000;
+    }
+
+    & > input {
+      transition: 250ms ease;
+      outline: none;
+      border-color: $main-1000;
+    }
+  }
+
+  & > span {
+    border: 1px solid black;
+    padding: 0.2rem 0.5rem;
+  }
+
+  & > input {
+    border: 1px solid black;
+    border-left: 0;
+    padding: 0 0 0 0.2rem;
+  }
+}

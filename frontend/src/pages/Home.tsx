@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import "./homepage.scss";
+import "./home.scss";
 
-export const Homepage = () => {
+export const Home = () => {
   return (
-    <section>
+    <section className="home-content">
       <article className="first-section">
         <div className="create-account">
           <span>Free account, 100% digital and with unlimited services</span>
-          <Link to="/">Create account</Link>
+          <Link to="/">Create an Account</Link>
         </div>
         <div className="cards">
           <div>

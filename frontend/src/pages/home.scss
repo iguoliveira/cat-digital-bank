@@ -1,6 +1,6 @@
 @import "../variables.scss";
 
-section {
+.home-content {
   & > .first-section {
     background-color: $main-1000;
     display: flex;
@@ -26,16 +26,16 @@ section {
       & > a {
         text-decoration: none;
         background-color: black;
-        text-transform: capitalize;
         color: white;
         border-radius: $rounded;
         width: max-content;
         padding: 0.5rem 1.5rem;
         font-weight: bold;
         font-size: 1.25rem;
+        box-shadow: 5px 5px 2px rgb(0, 0, 0, 0.5);
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.6);
+          background-color: rgba(0, 0, 0, 0.75);
         }
       }
     }

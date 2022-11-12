@@ -1,0 +1,22 @@
+@import "../variables.scss";
+
+.signup-content {
+  background-color: $main-1000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > a > img {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: $logo-width;
+  }
+
+  & > form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: $rounded;
+  }
+}
