@@ -42,9 +42,9 @@ export const Signup = () => {
                     <option>Male</option>
                     <option>Female</option>
                 </Select>
-                <Button name={'Sign Up'} type={'submit'} />
+                <Button type={'submit'}>Sign Up</Button>
             </form>
-            <Link to='/login'>Go to login</Link>
+            <Link to='/login' className='go-to-login'>Go to login</Link>
         </section>
     )
 }

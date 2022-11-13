@@ -15,7 +15,7 @@ interface SelectProps {
 }
 
 interface ButtonProps {
-    name: string
+    children: string
     onClick?: any
     type?: any
 }
@@ -37,8 +37,8 @@ export const Select = ({ children }: SelectProps) => {
     )
 }
 
-export const Button = ({ name, onClick, type }: ButtonProps) => {
+export const Button = ({ children, onClick, type }: ButtonProps) => {
     return (
-        <button onClick={onClick} type={type} className="button-content">{name}</button>
+        <button onClick={onClick} type={type} className="button-content">{children}</button>
     )
 }

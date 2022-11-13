@@ -9,7 +9,7 @@ export const Home = () => {
       <article className="first-section">
         <div className="create-account">
           <span>Free account, 100% digital and with unlimited services</span>
-          <Link to="/">Create an Account</Link>
+          <Link to="/sign-up">Create an Account</Link>
         </div>
         <div className="cards">
           <div>

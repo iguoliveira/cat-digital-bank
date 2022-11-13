@@ -1,6 +1,6 @@
 @import "../variables.scss";
 
-.signup-content {
+.login-content {
   background-color: $main-1000;
   height: 100vh;
   display: flex;
@@ -34,7 +34,7 @@
     }
   }
 
-  & > .go-to-login {
+  & > .go-to-signup {
     color: white;
     text-decoration: none;
 
