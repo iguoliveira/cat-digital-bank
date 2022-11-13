@@ -3,16 +3,24 @@ import Logo from '../assets/logo-png.png'
 import { Button, Input, Select } from '../components/Input'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import axios from "axios"
 
 export const Signup = () => {
     document.title = "Sign Up"
+    const client = useQueryClient()
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
-        password: "",
         cpf: "",
-        birthDay: "",
-        sex: ""
+        birthDay: new Date(),
+        sex: "F",
+        password: ""
+    })
+    const mutation = useMutation((data: {}) => axios.post('http://localhost:3000/user/register', { data }).then((res) => console.log(res)), {
+        onSuccess: () => {
+            client.invalidateQueries()
+        }
     })
 
     function handleChange(event: any) {
@@ -24,6 +32,8 @@ export const Signup = () => {
 
     function handleSubmit() {
         event?.preventDefault()
+        console.log(inputs)
+        mutation.mutate(inputs)
     }
 
     return (

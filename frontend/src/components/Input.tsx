@@ -6,7 +6,7 @@ interface InputProps {
     inputName: string
     type: string
     placeholder: string
-    value: string
+    value: any
     onChange: any
 }
 
