@@ -1,13 +1,18 @@
 import './signup.scss'
 import Logo from '../assets/logo-png.png'
-import { Input } from '../components/Input'
+import { Button, Input, Select } from '../components/Input'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 export const Signup = () => {
     document.title = "Sign Up"
     const [inputs, setInputs] = useState({
-        name: ''
+        name: "",
+        email: "",
+        password: "",
+        cpf: "",
+        birthDay: "",
+        sex: ""
     })
 
     function handleChange(event: any) {
@@ -17,14 +22,29 @@ export const Signup = () => {
         })
     }
 
+    function handleSubmit() {
+        event?.preventDefault()
+    }
+
     return (
         <section className='signup-content'>
             <Link to='/'>
                 <img src={Logo} />
             </Link>
-            <form>
+            <form onSubmit={handleSubmit}>
+                <h1 className='title'>Sign Up</h1>
                 <Input spanName="Name" inputName="name" type='text' placeholder='name' value={inputs.name} onChange={(event: any) => handleChange(event)} />
+                <Input spanName="Email" inputName="email" type='email' placeholder='email' value={inputs.email} onChange={(event: any) => handleChange(event)} />
+                <Input spanName="Pass" inputName="password" type="password" placeholder="password" value={inputs.password} onChange={(event: any) => handleChange(event)} />
+                <Input spanName="CPF" inputName="cpf" type='text' placeholder='CPF' value={inputs.cpf} onChange={(event: any) => handleChange(event)} />
+                <Input spanName="Birth" inputName="birthDay" type='date' placeholder='Birth Day' value={inputs.birthDay} onChange={(event: any) => handleChange(event)} />
+                <Select>
+                    <option>Male</option>
+                    <option>Female</option>
+                </Select>
+                <Button name={'Sign Up'} type={'submit'} />
             </form>
+            <Link to='/login'>Go to login</Link>
         </section>
     )
 }

@@ -19,13 +19,59 @@
   }
 
   & > span {
-    border: 1px solid black;
+    border: 1px solid $input-border-1000;
     padding: 0.2rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
   }
 
   & > input {
-    border: 1px solid black;
+    border: 1px solid $input-border-1000;
     border-left: 0;
     padding: 0 0 0 0.2rem;
+    width: 100%;
+    padding: 0.6rem;
+    border-bottom-right-radius: $rounded;
+    border-top-right-radius: $rounded;
+
+    &:hover {
+      background-color: rgb(240, 240, 240);
+      transition: 250ms ease;
+    }
+  }
+}
+
+.select-content {
+  border: 0;
+  border-bottom: 1px solid $input-border-1000;
+  padding: 0.25rem;
+
+  &:focus {
+    outline: none;
+    border-color: $main-1000;
+  }
+
+  &:hover {
+    background-color: rgb(240, 240, 240);
+    transition: 250ms ease;
+  }
+}
+
+.button-content {
+  border: 1px solid $main-1000;
+  background-color: white;
+  padding: 1rem;
+  cursor: pointer;
+  color: $main-1000;
+  border-radius: $rounded;
+  text-transform: uppercase;
+  font-weight: bolder;
+
+  &:hover {
+    background-color: $main-1000;
+    color: white;
+    transition: 250ms ease;
   }
 }

@@ -4,13 +4,15 @@
   background-color: $main-1000;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 
   & > a > img {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 1.05rem;
+    left: 1.2rem;
     width: $logo-width;
   }
 
@@ -18,5 +20,23 @@
     background-color: white;
     padding: 2rem;
     border-radius: $rounded;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+    & > .title {
+      text-align: center;
+    }
+  }
+
+  & > a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
   }
 }
