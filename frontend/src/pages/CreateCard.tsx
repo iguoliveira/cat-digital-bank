@@ -32,7 +32,7 @@ export const CreateCard = () => {
     const mutation = useMutation(postCard, {
         onSuccess: () => {
             Notify.success('Cartão Criado!', { clickToClose: true, timeout: 2000 })
-            navigate(`/user/${data.id}/profile`)
+            navigate(`/user/id:${data.id}/profile`)
         }
     })
 

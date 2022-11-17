@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { persist } from 'zustand/middleware'
 
 interface User {
     id: number
@@ -15,7 +16,10 @@ interface UserStore {
     setUser: any
 }
 
-export const useUserStore = create<UserStore>((set) => ({
+export const useUserStore = create<UserStore>()(persist((set) => ({
     user: null,
     setUser: (data: User) => set(() => ({ user: data }))
+}), {
+    name: 'user-store',
+    getStorage: () => localStorage
 }))
