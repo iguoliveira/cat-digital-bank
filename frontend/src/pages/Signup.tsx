@@ -1,25 +1,28 @@
 import './signup.scss'
 import Logo from '../assets/logo-png.png'
 import { Button, Input, Select } from '../components/Input'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import axios from "axios"
+import { useMutation } from '@tanstack/react-query'
+import { postUser } from '../fetchers/user'
+import { Notify } from 'notiflix'
 
 export const Signup = () => {
     document.title = "Sign Up"
-    const client = useQueryClient()
+    const navigate = useNavigate()
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
         cpf: "",
-        birthDay: new Date(),
-        sex: "F",
+        age: 14,
+        sex: "male",
         password: ""
     })
-    const mutation = useMutation((data: {}) => axios.post('http://localhost:3000/user/register', { data }).then((res) => console.log(res)), {
+
+    const mutation = useMutation(postUser, {
         onSuccess: () => {
-            client.invalidateQueries()
+            Notify.success('Conta Criada', { clickToClose: true, timeout: 2000 })
+            navigate('/login')
         }
     })
 
@@ -32,7 +35,6 @@ export const Signup = () => {
 
     function handleSubmit() {
         event?.preventDefault()
-        console.log(inputs)
         mutation.mutate(inputs)
     }
 
@@ -43,14 +45,14 @@ export const Signup = () => {
             </Link>
             <form onSubmit={handleSubmit}>
                 <h1 className='title'>Sign Up</h1>
-                <Input spanName="Name" inputName="name" type='text' placeholder='name' value={inputs.name} onChange={(event: any) => handleChange(event)} />
-                <Input spanName="Email" inputName="email" type='email' placeholder='email' value={inputs.email} onChange={(event: any) => handleChange(event)} />
-                <Input spanName="Pass" inputName="password" type="password" placeholder="password" value={inputs.password} onChange={(event: any) => handleChange(event)} />
-                <Input spanName="CPF" inputName="cpf" type='text' placeholder='CPF' value={inputs.cpf} onChange={(event: any) => handleChange(event)} />
-                <Input spanName="Birth" inputName="birthDay" type='date' placeholder='Birth Day' value={inputs.birthDay} onChange={(event: any) => handleChange(event)} />
-                <Select>
-                    <option>Male</option>
-                    <option>Female</option>
+                <Input spanName="Name" inputName="name" type='text' placeholder='name' value={inputs.name} onChange={(event: any) => handleChange(event)} required={true} />
+                <Input spanName="Email" inputName="email" type='email' placeholder='email' value={inputs.email} onChange={(event: any) => handleChange(event)} required={true} />
+                <Input spanName="Pass" inputName="password" type="password" placeholder="password" value={inputs.password} onChange={(event: any) => handleChange(event)} required={true} />
+                <Input spanName="CPF" inputName="cpf" type='text' placeholder='CPF' value={inputs.cpf} onChange={(event: any) => handleChange(event)} required={true} maxlength='11' />
+                <Input spanName="Age" inputName="age" type='number' placeholder='Age' value={inputs.age} onChange={(event: any) => handleChange(event)} required={true} />
+                <Select id='sex' inputName="sex" value={inputs.sex} onChange={(event: any) => handleChange(event)}>
+                    <option value='male'>Male</option>
+                    <option value='female'>Female</option>
                 </Select>
                 <Button type={'submit'}>Sign Up</Button>
             </form>
