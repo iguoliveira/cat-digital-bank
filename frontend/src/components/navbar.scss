@@ -1,0 +1,49 @@
+@import "../variables.scss";
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $main-1000;
+  padding: 1rem 1.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  & > a > .logo {
+    width: $logo-width;
+  }
+
+  & > .container-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    & > .links {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: black;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    & > .sign-up {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.8rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+}
