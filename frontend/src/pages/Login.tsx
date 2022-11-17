@@ -1,7 +1,7 @@
 import "./login.scss"
 import Logo from "../assets/logo-png.png"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button, Input } from "../components/Input"
 import { tryLogin } from "../fetchers/user"
 import { useQuery } from "@tanstack/react-query"
@@ -10,11 +10,13 @@ import { Notify } from "notiflix"
 
 export const Login = () => {
     document.title = 'Login'
-    const [user, setUser] = useUserStore((state) => [state.user, state.setUser])
+    const navigate = useNavigate()
+    const [setUser] = useUserStore((state) => [state.setUser])
     const [inputs, setInputs] = useState({
         cpf: "",
         password: ""
     })
+    const { data } = useQuery(['tryLogin', inputs.cpf || '1', inputs.password || '1'], tryLogin)
 
     function handleChange(event: any) {
         setInputs({
@@ -23,16 +25,15 @@ export const Login = () => {
         })
     }
 
-    const { data } = useQuery(['tryLogin', inputs.cpf || '1', inputs.password || '1'], tryLogin)
-    const handleSubmit = () => {
+    function handleSubmit() {
         event?.preventDefault()
         if (data.tryLogin != 'invalid') {
             setUser(data.login[0])
             Notify.success("Usuario Logado!")
+            navigate(`/user/id:${data.login[0].id}/create-card`)
         } else {
             Notify.failure('Credenciais de login invalidas!')
         }
-        console.log(user)
     }
 
     return (
@@ -42,7 +43,7 @@ export const Login = () => {
             </Link>
             <form onSubmit={handleSubmit}>
                 <h1 className="title">Login</h1>
-                <Input spanName="CPF" inputName="cpf" type="text" placeholder="CPF" value={inputs.cpf} onChange={(event: any) => handleChange(event)} required={true} />
+                <Input spanName="CPF" inputName="cpf" type="text" placeholder="CPF" value={inputs.cpf} onChange={(event: any) => handleChange(event)} required={true} maxlength={'11'} />
                 <Input spanName="Pass" inputName="password" type="text" placeholder="password" value={inputs.password} onChange={(event: any) => handleChange(event)} required={true} />
                 <Button type={'submit'}>Login</Button>
             </form>
