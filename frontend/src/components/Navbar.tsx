@@ -2,15 +2,10 @@ import "./navbar.scss";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo-png.png";
 import { useUserStore } from "../stores/user";
-import { useEffect } from "react";
 
 export const Navbar = () => {
-  const [user] = useUserStore((state) => [state.user])
+  const [user, removeUser] = useUserStore((state) => [state.user, state.removeUser])
 
-  useEffect(() => {
-    console.log(user)
-  })
-  
   return (
     <nav className="navbar-content">
       <Link to='/'>
@@ -18,8 +13,20 @@ export const Navbar = () => {
       </Link>
       <div className="container-links">
         <Link to="/" className="links">Home</Link>
-        <Link to="/login" className="links">Login</Link>
-        <Link to="/sign-up" className="sign-up">Sign up</Link>
+        {!user ?
+          (
+            <>
+              <Link to="/login" className="links">Login</Link>
+              <Link to="/sign-up" className="sign-up">Sign up</Link>
+            </>
+          )
+          :
+          (
+            <>
+              <Link to={`/user/id:${user.id}/profile`} className="links">Profile</Link>
+              <button className="logout" onClick={removeUser}>Logout</button>
+            </>
+          )}
       </div>
     </nav>
   );

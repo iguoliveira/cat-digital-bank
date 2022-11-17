@@ -38,7 +38,7 @@ export const App = () => {
           path: 'create-card',
           element: <CreateCard />,
           loader: async ({ params }) => {
-            return axios.get(`${URL}/user/${params.id}`).then(res => res.data.user[0])
+            return axios.get(`${URL}/card/${params.id}`).then(res => res.data)
           }
         }
       ]

@@ -1,16 +1,28 @@
 import { Link } from "react-router-dom";
+import { useUserStore } from "../stores/user";
 import "./home.scss";
 
 export const Home = () => {
   document.title = 'Homepage'
+  const [user] = useUserStore((state) => [state.user])
 
   return (
     <section className="home-content">
       <article className="first-section">
-        <div className="create-account">
-          <span>Free account, 100% digital and with unlimited services</span>
-          <Link to="/sign-up">Create an Account</Link>
-        </div>
+        {!user ?
+          (
+            <div className="create-account">
+              <span>Free account, 100% digital and with unlimited services</span>
+              <Link to="/sign-up">Create an Account</Link>
+            </div>
+          )
+          :
+          (
+            <div className="create-account">
+              <span>Welcome {user.name}, to our journey!</span>
+              <Link to={`/user/id:${user.id}/profile`}>See your beauty!</Link>
+            </div>
+          )}
         <div className="cards">
           <div>
             <span>Data Security</span>

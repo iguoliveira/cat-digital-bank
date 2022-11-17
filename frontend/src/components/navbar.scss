@@ -12,16 +12,16 @@
   right: 0;
   z-index: 9999;
 
-  & > a > .logo {
+  &>a>.logo {
     width: $logo-width;
   }
 
-  & > .container-links {
+  &>.container-links {
     display: flex;
     align-items: center;
     gap: 2rem;
 
-    & > .links {
+    &>.links {
       text-decoration: none;
       font-weight: bold;
       font-size: 1.2rem;
@@ -32,7 +32,7 @@
       }
     }
 
-    & > .sign-up {
+    &>.sign-up {
       background-color: rgba(0, 0, 0, 0.5);
       padding: 0.8rem;
       color: white;
@@ -40,6 +40,22 @@
       font-weight: bold;
       border-radius: 0.5rem;
       text-transform: uppercase;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    &>.logout {
+      border: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.8rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      text-transform: uppercase;
+      cursor: pointer;
 
       &:hover {
         background-color: rgba(0, 0, 0, 0.7);
