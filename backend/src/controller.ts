@@ -39,7 +39,7 @@ controller.post('/user-register', async (req, res) => {
 
 controller.post('/card-register', async (req, res) => {
   db.serialize(() => {
-    db.run("INSERT INTO Card (number, ccv, plan, type, password, userFk) VALUES (?, ?, ?, ?, ?, ?)", [req.body.number, req.body.ccv, req.body.plan, req.body.type, req.body.password, req.body.userFk])
+    db.run("INSERT INTO Card (number, ccv, expiration, plan, type, password, userFk) VALUES (?, ?, ?, ?, ?, ?, ?)", [req.body.number, req.body.ccv, req.body.expiration, req.body.plan, req.body.type, req.body.password, req.body.userFk])
   })
 })
 

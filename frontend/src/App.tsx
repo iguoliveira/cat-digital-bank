@@ -8,6 +8,8 @@ import { Profile } from "./pages/Profile";
 import axios from "axios";
 import { CreateCard } from "./pages/CreateCard";
 
+export const URL = "http://localhost:8000"
+
 export const App = () => {
   const router = createBrowserRouter([
     {
@@ -29,12 +31,15 @@ export const App = () => {
           path: 'profile',
           element: <Profile />,
           loader: async ({ params }) => {
-            return axios.get('http://localhost:8000/card/' + params.id).then(res => res.data.card)
+            return axios.get(`${URL}/card/${params.id}`).then(res => res.data.card)
           }
         },
         {
           path: 'create-card',
-          element: <CreateCard />
+          element: <CreateCard />,
+          loader: async ({ params }) => {
+            return axios.get(`${URL}/user/${params.id}`).then(res => res.data.user[0])
+          }
         }
       ]
     }

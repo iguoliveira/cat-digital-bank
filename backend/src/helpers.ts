@@ -8,6 +8,6 @@ export const createUserTable = async () => {
 
 export const createCardTable = async () => {
     db.serialize(() => {
-        db.exec('CREATE TABLE IF NOT EXISTS Card (id INTEGER PRIMARY KEY, number TEXT, ccv TEXT, plan TEXT, type TEXT, password TEXT, userFk INTEGER, FOREIGN KEY (userFk) REFERENCES User(id))')
+        db.exec('CREATE TABLE IF NOT EXISTS Card (id INTEGER PRIMARY KEY, number TEXT, ccv TEXT, expiration TEXT, plan TEXT, type TEXT, password TEXT, userFk INTEGER, FOREIGN KEY (userFk) REFERENCES User(id))')
     })
 }
