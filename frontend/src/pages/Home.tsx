@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/user";
+import Shield from '../assets/shield.png'
 import "./home.scss";
 
 export const Home = () => {
@@ -52,7 +53,6 @@ export const Home = () => {
           </div>
         </div>
       </article>
-      <div>nao</div>
     </section>
   );
 };
