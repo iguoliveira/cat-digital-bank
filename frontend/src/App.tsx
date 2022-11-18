@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { Navbar } from "./components/Navbar";
@@ -5,8 +6,8 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { Profile } from "./pages/Profile";
-import axios from "axios";
 import { CreateCard } from "./pages/CreateCard";
+import { Pix } from "./pages/Pix";
 
 export const URL = "http://localhost:8000"
 
@@ -40,6 +41,15 @@ export const App = () => {
           loader: async ({ params }) => {
             return axios.get(`${URL}/card/${params.id}`).then(res => res.data)
           }
+        }
+      ]
+    },
+    {
+      path: '/transactions/',
+      children: [
+        {
+          path: 'pix',
+          element: <Pix />
         }
       ]
     }

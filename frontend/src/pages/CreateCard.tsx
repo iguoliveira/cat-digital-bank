@@ -39,7 +39,7 @@ export const CreateCard = () => {
     const accountMutation = useMutation(postAccount, {
         onSuccess: () => {
             Notify.success('Card Created!', { clickToClose: true, timeout: 2000 })
-            navigate(`/user/id:${data.params.id}/profile`)
+            navigate(`/`)
         }
     })
 

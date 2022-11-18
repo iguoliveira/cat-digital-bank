@@ -3,16 +3,21 @@ import Banner from '../assets/banner-wallpaper.jpg'
 import ProfilePhoto from '../assets/user-profile-photo.png'
 import Show from '../assets/visible-icon.png'
 import Hide from '../assets/hide-icon.png'
-import { useQuery } from "@tanstack/react-query"
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
 import { BankCardBack, BankCardFront } from "../components/BankCard"
-import { findOneUser } from "../fetchers/user"
 import { useEffect, useState } from 'react'
+import { useUserStore } from '../stores/user'
 
 export const Profile = () => {
     document.title = 'User Profile'
+    const [user] = useUserStore((state) => [state.user])
     const [visible, isVisible] = useState(false)
     const info: any = useLoaderData()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user) navigate('/')
+    }, [user])
 
     return (
         <section className='user-profile-content'>

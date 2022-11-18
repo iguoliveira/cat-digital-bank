@@ -23,7 +23,8 @@ export const Navbar = () => {
           :
           (
             <>
-              <Link to={`/user/id:${user.id}/profile`} className="links">Profile</Link>
+              <Link to={`/transactions/pix`} className="links">Pix</Link>
+              <Link to={`/user/id:${user.userId}/profile`} className="links">Profile</Link>
               <button className="logout" onClick={removeUser}>Logout</button>
             </>
           )}
