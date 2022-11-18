@@ -39,34 +39,34 @@ export const BankCardFront = ({ name }: BankCardFrontProps) => {
 
 export const BankCardBack = ({ plan, ccv, expiration, number }: BankCardBackProps) => {
     return (
-        <div className="bg-cardTheme-1000 rounded pb-4 text-white h-48 shadow-black shadow-sm w-[370px]">
-            <span className="text-[5px] flex item-center ml-2">
+        <div className="bank-card-back-content">
+            <span className="copyright-content">
                 made by @CAT Bank
             </span>
-            <div className="bg-cardTheme-500 py-2">&#8203;</div>
-            <div className="px-4">
-                <div className="w-16 flex flex-col items-center mt-2 space-y-1">
-                    <div className="text-xs uppercase">{plan == "P" ? "Platinum" : plan == "G" ? "Gold" : "Silver"}</div>
-                    <div className="bg-cardTheme-500 rounded-xl w-10 px-8 py-1">
+            <div className="colorful-line">&#8203;</div>
+            <div className="card-content-container">
+                <div className="card-plan-container">
+                    <div className="plan-content">{plan}</div>
+                    <div className="plan-square">
                         &#8203;
                     </div>
                 </div>
-                <div className="flex space-x-2 text-lg mt-4 font-bold">{number}</div>
-                <div className="flex items-center justify-between">
+                <div className="card-number-space">{number}</div>
+                <div className="crucial-data-container">
                     <div>
-                        <div className="flex space-x-10">
-                            <div className="flex items-center space-x-1">
-                                <span className="text-[10px]">exp:</span>
+                        <div className="expiration-ccv-container">
+                            <div className="data">
+                                <span className="title">exp:</span>
                                 <span>{expiration}</span>
                             </div>
-                            <div className="flex items-center space-x-1">
-                                <span className="text-[10px]">ccv:</span>
+                            <div className="data">
+                                <span className="title">ccv:</span>
                                 <span>{ccv}</span>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img src={Mastercard} className="w-12" />
+                        <img src={Mastercard} className="mastercard-logo" />
                     </div>
                 </div>
             </div>

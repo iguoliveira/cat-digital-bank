@@ -69,3 +69,84 @@
     }
   }
 }
+
+.bank-card-back-content {
+  background-color: $main-1000;
+  border-radius: $rounded;
+  padding-bottom: 1rem;
+  color: white;
+  height: 12rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  width: 23rem;
+
+  & > .copyright-content {
+    font-size: 0.3rem;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+  }
+
+  & > .colorful-line {
+    background-color: $bank-card-1000;
+    padding: 1rem 0 1rem 0;
+  }
+
+  & > .card-content-container {
+    padding: 0 1rem 0 1rem;
+
+    & > .card-plan-container {
+      width: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.5rem;
+      gap: 0.25rem;
+
+      & > .plan-content {
+        font-size: 0.75rem;
+        line-height: 1rem;
+        text-transform: uppercase;
+      }
+
+      & > .plan-square {
+        background-color: $bank-card-1000;
+        border-radius: 0.75rem;
+        width: 2.5rem;
+        padding: 0.25rem 2rem 0.25rem 2rem;
+      }
+    }
+
+    & > .card-number-space {
+      display: flex;
+      gap: 0.8rem;
+      font-size: 1.25rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    & > .crucial-data-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & > div > .expiration-ccv-container {
+        display: flex;
+        gap: 2rem;
+
+        & > .data {
+          display: flex;
+          align-items: end;
+          gap: 0.2rem;
+
+          & > .title {
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      & > div > .mastercard-logo {
+        width: 3rem;
+      }
+    }
+  }
+}
