@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { controller } from "./controller";
-import { createUserTable, createCardTable } from "./helpers";
+import { createUserTable, createCardTable, createAccountTable } from "./helpers";
 
 const PORT = 8000;
 const app = express();
@@ -14,6 +14,7 @@ app.listen(PORT, () =>
 
 createUserTable()
 createCardTable()
+createAccountTable()
 app.use(cors());
 app.use(express.json());
 app.use(controller);

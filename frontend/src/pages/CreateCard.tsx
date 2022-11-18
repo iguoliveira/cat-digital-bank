@@ -1,11 +1,12 @@
 import './createCard.scss'
+import Logo from '../assets/logo-png.png'
 import { useMutation } from '@tanstack/react-query'
 import { Notify } from 'notiflix'
 import { useEffect, useState } from 'react'
 import { Link, useLoaderData, useNavigate } from 'react-router-dom'
-import Logo from '../assets/logo-png.png'
 import { Button, Input } from '../components/Input'
 import { postCard } from '../fetchers/card'
+import { postAccount } from '../fetchers/account'
 
 export const CreateCard = () => {
     const data: any = useLoaderData()
@@ -28,10 +29,16 @@ export const CreateCard = () => {
         password: '',
         userFk: data.params.id
     })
+    const account = {
+        accountNumber: parseInt((Math.random() * (999999 - 100000 + 1) + 100000).toString()).toString(),
+        balance: 5000.00,
+        userFk: data.params.id
+    }
     const navigate = useNavigate()
-    const mutation = useMutation(postCard, {
+    const mutation = useMutation(postCard)
+    const accountMutation = useMutation(postAccount, {
         onSuccess: () => {
-            Notify.success('Cartão Criado!', { clickToClose: true, timeout: 2000 })
+            Notify.success('Card Created!', { clickToClose: true, timeout: 2000 })
             navigate(`/user/id:${data.params.id}/profile`)
         }
     })
@@ -52,6 +59,7 @@ export const CreateCard = () => {
     function handleSubmit() {
         event?.preventDefault()
         mutation.mutate(inputs)
+        accountMutation.mutate(account)
     }
 
     return (

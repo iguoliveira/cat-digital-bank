@@ -3,6 +3,7 @@ import { db } from "./database";
 
 const controller = Router();
 
+// GETs
 controller.get("/tryLogin/:cpf/:password", async (req, res) => {
   db.serialize(() => {
     db.all(
@@ -43,6 +44,7 @@ controller.get("/card/:id", async (req, res) => {
   });
 });
 
+// POSTs
 controller.post("/user-register", async (req, res) => {
   db.serialize(() => {
     db.run(
@@ -54,6 +56,19 @@ controller.post("/user-register", async (req, res) => {
         req.body.sex,
         req.body.email,
         req.body.password,
+      ]
+    );
+  });
+});
+
+controller.post("/account-register", async (req, res) => {
+  db.serialize(() => {
+    db.run(
+      "INSERT INTO Account (accountNumber, balance, userFk) VALUES (?,?,?)",
+      [
+        req.body.accountNumber,
+        req.body.balance,
+        req.body.userFk
       ]
     );
   });
