@@ -36,11 +36,11 @@ export const CreateCard = () => {
         }
     })
 
-    // useEffect(() => {
-    //     if (data.card.length > 0) {
-    //         navigate(`/user/id:${data.params.id}/profile`)
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (data.card.length > 0) {
+            navigate(`/user/id:${data.params.id}/profile`)
+        }
+    }, [])
 
     function handleChange(event: any) {
         setInputs({
@@ -51,8 +51,7 @@ export const CreateCard = () => {
 
     function handleSubmit() {
         event?.preventDefault()
-        console.log(data)
-        // mutation.mutate(inputs)
+        mutation.mutate(inputs)
     }
 
     return (
