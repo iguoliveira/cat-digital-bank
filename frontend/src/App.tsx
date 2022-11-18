@@ -31,7 +31,7 @@ export const App = () => {
           path: 'profile',
           element: [<Navbar />, <Profile />],
           loader: async ({ params }) => {
-            return axios.get(`${URL}/card/${params.id}`).then(res => res.data.card[0])
+            return axios.get(`${URL}/user/${params.id}/info`).then(res => res.data.rows[0])
           }
         },
         {

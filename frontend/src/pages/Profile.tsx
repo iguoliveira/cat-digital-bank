@@ -7,21 +7,12 @@ import { useQuery } from "@tanstack/react-query"
 import { useLoaderData } from "react-router-dom"
 import { BankCardBack, BankCardFront } from "../components/BankCard"
 import { findOneUser } from "../fetchers/user"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const Profile = () => {
     document.title = 'User Profile'
     const [visible, isVisible] = useState(false)
-    const card: any = useLoaderData()
-    const { data, isLoading, error } = useQuery(['find-one-user', card.userFk], findOneUser)
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error in user's data GET!</div>;
-    }
+    const info: any = useLoaderData()
 
     return (
         <section className='user-profile-content'>
@@ -30,16 +21,16 @@ export const Profile = () => {
                 <img src={ProfilePhoto} className="profile-photo" />
             </article>
             <article className='user-data-container'>
-                <span>Igor Oliveira Rodrigues</span>
+                <span>{info.name}</span>
                 <div>
-                    <span>R$ {visible ? '2.500,50' : '--------'}</span>
+                    <span>R$ {visible ? info.balance : '-------'}</span>
                     <img src={!visible ? Show : Hide} onClick={() => isVisible(!visible)} />
                 </div>
             </article>
             <article className='bank-card-container'>
                 <div>
-                    <BankCardFront name={data.name} />
-                    <BankCardBack number={card.number} expiration={card.expiration} plan={card.plan} ccv={card.ccv} />
+                    <BankCardFront name={info.name} />
+                    <BankCardBack number={info.cardNumber} expiration={info.expiration} plan={info.plan} ccv={info.ccv} />
                 </div>
             </article>
         </section>

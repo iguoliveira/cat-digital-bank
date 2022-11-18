@@ -44,6 +44,15 @@ controller.get("/card/:id", async (req, res) => {
   });
 });
 
+controller.get('/user/:id/info', async (req, res) => {
+  db.serialize(() => {
+    db.all("SELECT * FROM User u INNER JOIN Card c ON c.userFk=u.userId INNER JOIN Account a ON a.userFk=u.userId WHERE u.userId=?", [req.params.id], (error: Error, rows: any) => {
+      if (error) return res.status(500).json({ error, msg: error.message })
+      res.json({ rows })
+    })
+  })
+})
+
 // POSTs
 controller.post("/user-register", async (req, res) => {
   db.serialize(() => {
@@ -77,14 +86,14 @@ controller.post("/account-register", async (req, res) => {
 controller.post("/card-register", async (req, res) => {
   db.serialize(() => {
     db.run(
-      "INSERT INTO Card (number, ccv, expiration, plan, type, password, userFk) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO Card (cardNumber, ccv, expiration, plan, type, cardPassword, userFk) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [
-        req.body.number,
+        req.body.cardNumber,
         req.body.ccv,
         req.body.expiration,
         req.body.plan,
         req.body.type,
-        req.body.password,
+        req.body.cardPassword,
         req.body.userFk,
       ]
     );

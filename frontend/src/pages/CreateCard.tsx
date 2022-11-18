@@ -11,7 +11,7 @@ import { postAccount } from '../fetchers/account'
 export const CreateCard = () => {
     const data: any = useLoaderData()
     const [inputs, setInputs] = useState({
-        number:
+        cardNumber:
             parseInt((Math.random() * (9999 - 1000 + 1) + 1000).toString()).toString() +
             " " +
             parseInt((Math.random() * (9999 - 1000 + 1) + 1000).toString()).toString() +
@@ -26,7 +26,7 @@ export const CreateCard = () => {
             parseInt((Math.random() * (32 - 28 + 1) + 28).toString()).toString(),
         plan: 'platinum',
         type: 'credit',
-        password: '',
+        cardPassword: '',
         userFk: data.params.id
     })
     const account = {
@@ -69,7 +69,7 @@ export const CreateCard = () => {
             </Link>
             <form onSubmit={handleSubmit}>
                 <h1 className="title">Create Card</h1>
-                <Input spanName="Pass" inputName="password" type="text" placeholder="card password" value={inputs.password} onChange={(event: any) => handleChange(event)} required={true} />
+                <Input spanName="Pass" inputName="cardPassword" type="text" placeholder="card password" value={inputs.cardPassword} onChange={(event: any) => handleChange(event)} required={true} />
                 <Button type={'submit'}>Create Card</Button>
             </form>
         </section>
