@@ -62,21 +62,24 @@ export const Profile = () => {
                         </div>
                     </div>
                 </article>
-                <article className='bank-card-container'>
-                    <div>
+                <article className='bank-card-transactions-container'>
+                    <div className='card-container'>
                         <BankCardFront name={info.name} />
                         <BankCardBack number={info.cardNumber} expiration={info.expiration} plan={info.plan} ccv={info.ccv} />
                     </div>
-                    {!isLoading && (
-                        data.map((item: any, index: any) => {
-                            return (
-                                <div>
-                                    <div>R$ {item.transactionValue}</div>
-                                    <div>{item.accountSender == user?.userAccountNumberFk ? ('ENVIADO') : ("RECEBIDO")}</div>
-                                </div>
-                            )
-                        })
-                    )}
+                    <div className='transactions-container'>
+                        {!isLoading && (
+                            data.map((item: any, index: any) => {
+                                return (
+                                    <div className='transaction'>
+                                        <div className='send-received'>{item.accountSender == user?.userAccountNumberFk ? `To ${item.accountReceiver}` : `From ${item.accountSender}`}</div>
+                                        <div className='value'>R$ {item.transactionValue}</div>
+                                        <div className='verb'>{item.accountSender == user?.userAccountNumberFk ? (<span className='sent'>enviado</span>) : (<span className='received'>recebido</span>)}</div>
+                                    </div>
+                                )
+                            })
+                        )}
+                    </div>
                 </article>
             </div>
         </section>

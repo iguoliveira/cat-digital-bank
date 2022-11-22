@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .user-profile-content {
   & > .user-photo-container {
     position: relative;
@@ -26,8 +28,11 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      width: fit-content;
 
       & > .name-balance-data {
+        width: fit-content;
+
         & > span {
           font-size: 2rem;
           font-weight: bold;
@@ -37,7 +42,7 @@
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          width: 50rem;
+          width: fit-content;
 
           & > span {
             font-size: 2rem;
@@ -56,6 +61,7 @@
         flex-direction: column;
         justify-content: center;
         gap: 0.5rem;
+        width: fit-content;
 
         & > div {
           & > .title {
@@ -75,14 +81,15 @@
       }
     }
 
-    & > .bank-card-container {
+    & > .bank-card-transactions-container {
       position: relative;
       right: 2.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 2rem;
 
-      & > div {
+      & > .card-container {
         background-color: rgb(238, 238, 238);
         padding: 2rem;
         max-width: fit-content;
@@ -90,6 +97,59 @@
         display: flex;
         flex-direction: column;
         gap: 2.5rem;
+      }
+
+      & > .transactions-container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 25rem;
+        width: fit-content;
+        box-shadow: 0 0 4px inset black;
+        padding: 2rem;
+        border-radius: $rounded;
+        gap: 1rem;
+
+        & > .transaction {
+          padding: 0.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          background-color: whitesmoke;
+          border-radius: $rounded;
+          cursor: pointer;
+          box-shadow: 0 0 4px black;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          & > .send-received {
+            font-size: 0.8rem;
+            color: rgb(153, 153, 153);
+            opacity: 0.8;
+          }
+
+          & > .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+          }
+
+          & > .verb {
+            text-transform: uppercase;
+            font-weight: bold;
+
+            & > .sent {
+              color: red;
+            }
+
+            & > .received {
+              color: green;
+            }
+          }
+        }
       }
     }
   }

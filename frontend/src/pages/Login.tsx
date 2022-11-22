@@ -44,7 +44,7 @@ export const Login = () => {
             <form onSubmit={handleSubmit}>
                 <h1 className="title">Login</h1>
                 <Input spanName="CPF" inputName="cpf" type="text" placeholder="CPF" value={inputs.cpf} onChange={(event: any) => handleChange(event)} required={true} maxlength={'11'} />
-                <Input spanName="Pass" inputName="password" type="text" placeholder="password" value={inputs.password} onChange={(event: any) => handleChange(event)} required={true} />
+                <Input spanName="Pass" inputName="password" type="password" placeholder="password" value={inputs.password} onChange={(event: any) => handleChange(event)} required={true} />
                 <Button type={'submit'}>Login</Button>
             </form>
             <Link to={"/sign-up"} className="go-to-signup">Click here to Sign Up</Link>
