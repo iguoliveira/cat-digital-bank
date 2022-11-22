@@ -7,6 +7,8 @@ import { useLoaderData, useNavigate } from "react-router-dom"
 import { BankCardBack, BankCardFront } from "../components/BankCard"
 import { useEffect, useState } from 'react'
 import { useUserStore } from '../stores/user'
+import { getUserTransactions } from '../fetchers/transaction'
+import { useQuery } from '@tanstack/react-query'
 
 export const Profile = () => {
     document.title = 'User Profile'
@@ -15,9 +17,12 @@ export const Profile = () => {
     const info: any = useLoaderData()
     const navigate = useNavigate()
 
+
     useEffect(() => {
         if (!user) navigate('/')
     }, [user])
+
+    const { data, isLoading } = useQuery(['transactions', user?.userAccountNumberFk], getUserTransactions)
 
     return (
         <section className='user-profile-content'>
@@ -62,6 +67,16 @@ export const Profile = () => {
                         <BankCardFront name={info.name} />
                         <BankCardBack number={info.cardNumber} expiration={info.expiration} plan={info.plan} ccv={info.ccv} />
                     </div>
+                    {!isLoading && (
+                        data.map((item: any, index: any) => {
+                            return (
+                                <div>
+                                    <div>R$ {item.transactionValue}</div>
+                                    <div>{item.accountSender == user?.userAccountNumberFk ? ('ENVIADO') : ("RECEBIDO")}</div>
+                                </div>
+                            )
+                        })
+                    )}
                 </article>
             </div>
         </section>

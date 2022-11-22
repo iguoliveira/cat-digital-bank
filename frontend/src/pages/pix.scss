@@ -34,4 +34,16 @@
       letter-spacing: 0.5rem;
     }
   }
+
+  & > .error {
+    text-align: center;
+    background-color: rgb(230, 0, 0);
+    color: white;
+    padding: 1rem;
+    border-radius: $rounded;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }

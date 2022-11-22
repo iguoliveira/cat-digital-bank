@@ -69,7 +69,7 @@ controller.get('/user/:id/info', async (req, res) => {
 
 controller.get('/user/:id/transactions', async (req, res) => {
   db.serialize(() => {
-    db.all("SELECT * FROM TransactionPerAccount WHERE accountSender=? OR accountReceiver=?", [req.params.id], (error: Error, rows: any) => {
+    db.all("SELECT * FROM TransactionPerAccount WHERE accountSender=? OR accountReceiver=?", [req.params.id, req.params.id], (error: Error, rows: any) => {
       if (error) return res.status(500).json({ error, msg: error.message })
       res.json({ rows })
     })

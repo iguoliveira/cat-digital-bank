@@ -18,6 +18,10 @@ export const Pix = () => {
         accountSender: user?.userAccountNumberFk,
         accountReceiver: ''
     })
+    const [errors, setErrors] = useState({
+        accountNumber: '',
+        transactionValue: ''
+    })
     const { data } = useQuery(['accountIsValid', inputs.accountReceiver || '1'], accountIsValid)
 
     const makeTransaction = useMutation(postTransaction)
@@ -38,14 +42,26 @@ export const Pix = () => {
     function handleSubmit() {
         if (data.accountIsValid != 'invalid') {
             if (info.balance >= inputs.transactionValue) {
+                setErrors({
+                    transactionValue: '',
+                    accountNumber: ''
+                })
                 makeTransaction.mutate(inputs)
                 removeBalance.mutate({ valueTransfer: inputs.transactionValue, accountId: user?.userAccountNumberFk })
                 addBalance.mutate({ valueTransfer: inputs.transactionValue, accountId: inputs.accountReceiver })
             } else {
                 event?.preventDefault()
+                setErrors({
+                    transactionValue: 'NOT ENOUGH BALANCE',
+                    accountNumber: ''
+                })
             }
         } else {
             event?.preventDefault()
+            setErrors({
+                transactionValue: '',
+                accountNumber: 'INVALID ACCOUNT NUMBER'
+            })
         }
     }
 
@@ -60,6 +76,8 @@ export const Pix = () => {
                 <Input type='number' spanName='Value' inputName='transactionValue' placeholder='Value' value={inputs.transactionValue} onChange={(event: any) => handleChange(event)} required={true} />
                 <Button type={'submit'}>SEND</Button>
             </form>
+            {errors.transactionValue && <div className='error'>{errors.transactionValue}</div>}
+            {errors.accountNumber && <div className='error'>{errors.accountNumber}</div>}
         </section>
     )
 }
