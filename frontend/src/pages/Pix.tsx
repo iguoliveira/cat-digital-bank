@@ -6,7 +6,8 @@ import { useState } from 'react'
 
 export const Pix = () => {
     const [inputs, setInputs] = useState({
-        value: 0,
+        receiver: '',
+        value: 0
     })
 
     function handleChange(event: any) {
@@ -28,6 +29,7 @@ export const Pix = () => {
             </Link>
             <form onSubmit={handleSubmit}>
                 <h1 className="title">PIX</h1>
+                <Input type='text' spanName='Receiver' inputName='receiver' placeholder='Account number' value={inputs.receiver} onChange={(event: any) => handleChange(event)} required={true} />
                 <Input type='number' spanName='Value' inputName='value' placeholder='Value' value={inputs.value} onChange={(event: any) => handleChange(event)} required={true} />
                 <Button type={'submit'}>SEND</Button>
             </form>

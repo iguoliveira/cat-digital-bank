@@ -23,7 +23,10 @@ export const App = () => {
     },
     {
       path: '/sign-up',
-      element: <Signup />
+      element: <Signup />,
+      loader: async () => {
+        return parseInt((Math.random() * (999999 - 100000 + 1) + 100000).toString()).toString()
+      },
     },
     {
       path: '/user/id::id/',
@@ -45,7 +48,7 @@ export const App = () => {
       ]
     },
     {
-      path: '/transactions/',
+      path: '/transactions/:id/',
       children: [
         {
           path: 'pix',

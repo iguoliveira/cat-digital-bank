@@ -1,24 +1,33 @@
 import './signup.scss'
 import Logo from '../assets/logo-png.png'
 import { Button, Input, Select } from '../components/Input'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { postUser } from '../fetchers/user'
+import { postAccount } from '../fetchers/account'
 import { Notify } from 'notiflix'
 
 export const Signup = () => {
     document.title = "Sign Up"
     const navigate = useNavigate()
+    const num: any = useLoaderData()
+
+    const account = {
+        accountId: num,
+        balance: 5000.00,
+    }
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
         cpf: "",
-        age: 14,
+        age: 18,
         sex: "male",
-        password: ""
+        password: "",
+        userAccountNumberFk: account.accountId
     })
 
+    const accountMutation = useMutation(postAccount)
     const mutation = useMutation(postUser, {
         onSuccess: () => {
             Notify.success('Conta Criada', { clickToClose: true, timeout: 2000 })
@@ -35,6 +44,7 @@ export const Signup = () => {
 
     function handleSubmit() {
         event?.preventDefault()
+        accountMutation.mutate(account)
         mutation.mutate(inputs)
     }
 

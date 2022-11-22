@@ -21,7 +21,7 @@ controller.get("/tryLogin/:cpf/:password", async (req, res) => {
 controller.get("/user/:id", async (req, res) => {
   db.serialize(() => {
     db.all(
-      "SELECT * FROM User WHERE id=?",
+      "SELECT * FROM User WHERE userId=?",
       [req.params.id],
       (error: any, rows: any) => {
         if (error) return res.status(500).json({ error, msg: error.message });
@@ -34,7 +34,7 @@ controller.get("/user/:id", async (req, res) => {
 controller.get("/card/:id", async (req, res) => {
   db.serialize(() => {
     db.all(
-      "SELECT * FROM Card WHERE userFk=?",
+      "SELECT * FROM Card WHERE cardAccountNumberFk=?",
       [req.params.id],
       (error: Error, rows: any) => {
         if (error) return res.status(500).json({ error, msg: error.message });
@@ -46,10 +46,16 @@ controller.get("/card/:id", async (req, res) => {
 
 controller.get('/user/:id/info', async (req, res) => {
   db.serialize(() => {
-    db.all("SELECT * FROM User u INNER JOIN Card c ON c.userFk=u.userId INNER JOIN Account a ON a.userFk=u.userId WHERE u.userId=?", [req.params.id], (error: Error, rows: any) => {
+    db.all("SELECT * FROM Account a INNER JOIN Card c ON c.cardAccountNumberFk=a.accountId INNER JOIN User u ON u.userAccountNumberFk=a.accountId WHERE a.accountId=?", [req.params.id], (error: Error, rows: any) => {
       if (error) return res.status(500).json({ error, msg: error.message })
       res.json({ rows })
     })
+  })
+})
+
+controller.get('/user/:id/transactions', async (req, res) => {
+  db.serialize(() => {
+    db.all("SELECT * FROM Transaction WHERE ")
   })
 })
 
@@ -57,7 +63,7 @@ controller.get('/user/:id/info', async (req, res) => {
 controller.post("/user-register", async (req, res) => {
   db.serialize(() => {
     db.run(
-      "INSERT INTO User (cpf, name, age, sex, email, password) VALUES (?,?,?,?,?,?)",
+      "INSERT INTO User (cpf, name, age, sex, email, password, userAccountNumberFk) VALUES (?,?,?,?,?,?,?)",
       [
         req.body.cpf,
         req.body.name,
@@ -65,6 +71,7 @@ controller.post("/user-register", async (req, res) => {
         req.body.sex,
         req.body.email,
         req.body.password,
+        req.body.userAccountNumberFk
       ]
     );
   });
@@ -73,11 +80,10 @@ controller.post("/user-register", async (req, res) => {
 controller.post("/account-register", async (req, res) => {
   db.serialize(() => {
     db.run(
-      "INSERT INTO Account (accountNumber, balance, userFk) VALUES (?,?,?)",
+      "INSERT INTO Account (accountId, balance) VALUES (?,?)",
       [
-        req.body.accountNumber,
-        req.body.balance,
-        req.body.userFk
+        req.body.accountId,
+        req.body.balance
       ]
     );
   });
@@ -86,7 +92,7 @@ controller.post("/account-register", async (req, res) => {
 controller.post("/card-register", async (req, res) => {
   db.serialize(() => {
     db.run(
-      "INSERT INTO Card (cardNumber, ccv, expiration, plan, type, cardPassword, userFk) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO Card (cardNumber, ccv, expiration, plan, type, cardPassword, cardAccountNumberFk) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [
         req.body.cardNumber,
         req.body.ccv,
@@ -94,7 +100,7 @@ controller.post("/card-register", async (req, res) => {
         req.body.plan,
         req.body.type,
         req.body.cardPassword,
-        req.body.userFk,
+        req.body.cardAccountNumberFk,
       ]
     );
   });

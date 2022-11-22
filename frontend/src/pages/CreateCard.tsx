@@ -6,10 +6,13 @@ import { useEffect, useState } from 'react'
 import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { Button, Input } from '../components/Input'
 import { postCard } from '../fetchers/card'
-import { postAccount } from '../fetchers/account'
+import { useUserStore } from '../stores/user'
 
 export const CreateCard = () => {
     const data: any = useLoaderData()
+    const navigate = useNavigate()
+    const [user] = useUserStore((state) => [state.user])
+
     const [inputs, setInputs] = useState({
         cardNumber:
             parseInt((Math.random() * (9999 - 1000 + 1) + 1000).toString()).toString() +
@@ -27,19 +30,12 @@ export const CreateCard = () => {
         plan: 'platinum',
         type: 'credit',
         cardPassword: '',
-        userFk: data.params.id
+        cardAccountNumberFk: user?.userAccountNumberFk
     })
-    const account = {
-        accountNumber: parseInt((Math.random() * (999999 - 100000 + 1) + 100000).toString()).toString(),
-        balance: 5000.00,
-        userFk: data.params.id
-    }
-    const navigate = useNavigate()
-    const mutation = useMutation(postCard)
-    const accountMutation = useMutation(postAccount, {
+    const mutation = useMutation(postCard, {
         onSuccess: () => {
             Notify.success('Card Created!', { clickToClose: true, timeout: 2000 })
-            navigate(`/`)
+            navigate("/")
         }
     })
 
@@ -59,7 +55,6 @@ export const CreateCard = () => {
     function handleSubmit() {
         event?.preventDefault()
         mutation.mutate(inputs)
-        accountMutation.mutate(account)
     }
 
     return (

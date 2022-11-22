@@ -15,47 +15,82 @@
     }
   }
 
-  & > .user-data-container {
-    & > span {
-      position: relative;
-      left: 2.5rem;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    & > div {
-      position: relative;
-      left: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      width: 50rem;
-
-      & > span {
-        font-size: 2rem;
-        font-weight: bold;
-      }
-
-      & > img {
-        width: 3rem;
-        cursor: pointer;
-      }
-    }
-  }
-
-  & > .bank-card-container {
+  & > div {
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
-    & > div {
-      background-color: rgb(238, 238, 238);
-      padding: 2rem;
-      max-width: fit-content;
-      box-shadow: 0 0 5px inset black;
+    .user-data-container {
+      position: relative;
+      left: 2.5rem;
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 2rem;
+
+      & > .name-balance-data {
+        & > span {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+
+        & > .balance {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          width: 50rem;
+
+          & > span {
+            font-size: 2rem;
+            font-weight: bold;
+          }
+
+          & > img {
+            width: 3rem;
+            cursor: pointer;
+          }
+        }
+      }
+
+      & > .user-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+
+        & > div {
+          & > .title {
+            font-weight: bold;
+            font-size: 1.5rem;
+          }
+
+          & > .data {
+            font-size: 1.5rem;
+            display: block;
+
+            &::first-letter {
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
+    }
+
+    & > .bank-card-container {
+      position: relative;
+      right: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & > div {
+        background-color: rgb(238, 238, 238);
+        padding: 2rem;
+        max-width: fit-content;
+        box-shadow: 0 0 5px inset black;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
     }
   }
 }

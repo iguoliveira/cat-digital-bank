@@ -9,6 +9,7 @@ interface User {
     sex: string
     email: string
     password: string
+    userAccountNumberFk: string
 }
 
 interface UserStore {

@@ -30,7 +30,7 @@ export const Input = ({ spanName, inputName, type, placeholder, value, onChange,
     return (
         <div className='input-content'>
             <span className='block'>{spanName}</span>
-            <input name={inputName} type={type} placeholder={`Insert your ${placeholder}`} value={value} onChange={onChange} maxLength={maxlength} required={required} />
+            <input name={inputName} type={type} placeholder={`${placeholder}`} value={value} onChange={onChange} maxLength={maxlength} required={required} />
         </div>
     )
 }

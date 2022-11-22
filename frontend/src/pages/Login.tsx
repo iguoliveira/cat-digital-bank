@@ -30,7 +30,7 @@ export const Login = () => {
         if (data.tryLogin != 'invalid') {
             setUser(data.login[0])
             Notify.success("Usuario Logado!")
-            navigate(`/user/id:${data.login[0].userId}/create-card`)
+            navigate(`/user/id:${data.login[0].userAccountNumberFk}/create-card`)
         } else {
             Notify.failure('Credenciais de login invalidas!')
         }

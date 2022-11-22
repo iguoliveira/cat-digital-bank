@@ -25,19 +25,45 @@ export const Profile = () => {
                 <img src={Banner} className="banner" />
                 <img src={ProfilePhoto} className="profile-photo" />
             </article>
-            <article className='user-data-container'>
-                <span>{info.name}</span>
-                <div>
-                    <span>R$ {visible ? info.balance : '-------'}</span>
-                    <img src={!visible ? Show : Hide} onClick={() => isVisible(!visible)} />
-                </div>
-            </article>
-            <article className='bank-card-container'>
-                <div>
-                    <BankCardFront name={info.name} />
-                    <BankCardBack number={info.cardNumber} expiration={info.expiration} plan={info.plan} ccv={info.ccv} />
-                </div>
-            </article>
+            <div>
+                <article className='user-data-container'>
+                    <div className='name-balance-data'>
+                        <span>{info.name}</span>
+                        <div className='balance'>
+                            <span>R$ {visible ? info.balance : ('-'.repeat(info.balance.toString().split('').length))}</span>
+                            <img src={!visible ? Show : Hide} onClick={() => isVisible(!visible)} />
+                        </div>
+                    </div>
+                    <div className='user-data'>
+                        <div>
+                            <span className='title'>Email: </span>
+                            <span className='data'>{info.email}</span>
+                        </div>
+                        <div>
+                            <span className='title'>Account Number: </span>
+                            <span className='data'>{info.accountNumber}</span>
+                        </div>
+                        <div>
+                            <span className='title'>CPF: </span>
+                            <span className='data'>{info.cpf}</span>
+                        </div>
+                        <div>
+                            <span className='title'>Age: </span>
+                            <span className='data'>{info.age}</span>
+                        </div>
+                        <div>
+                            <span className='title'>Sex: </span>
+                            <span className='data'>{info.sex}</span>
+                        </div>
+                    </div>
+                </article>
+                <article className='bank-card-container'>
+                    <div>
+                        <BankCardFront name={info.name} />
+                        <BankCardBack number={info.cardNumber} expiration={info.expiration} plan={info.plan} ccv={info.ccv} />
+                    </div>
+                </article>
+            </div>
         </section>
     )
 }
