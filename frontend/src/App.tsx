@@ -48,11 +48,14 @@ export const App = () => {
       ]
     },
     {
-      path: '/transactions/:id/',
+      path: '/transactions/id::id/',
       children: [
         {
           path: 'pix',
-          element: <Pix />
+          element: <Pix />,
+          loader: async ({ params }) => {
+            return axios.get(`${URL}/user/${params.id}/info`).then(res => res.data.rows[0])
+          }
         }
       ]
     }

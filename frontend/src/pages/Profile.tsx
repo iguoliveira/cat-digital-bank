@@ -41,7 +41,7 @@ export const Profile = () => {
                         </div>
                         <div>
                             <span className='title'>Account Number: </span>
-                            <span className='data'>{info.accountNumber}</span>
+                            <span className='data'>{info.accountId}</span>
                         </div>
                         <div>
                             <span className='title'>CPF: </span>

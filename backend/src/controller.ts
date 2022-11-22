@@ -18,6 +18,20 @@ controller.get("/tryLogin/:cpf/:password", async (req, res) => {
   });
 });
 
+controller.get("/accountIsValid/:accountId", async (req, res) => {
+  db.serialize(() => {
+    db.all(
+      "SELECT * FROM Account WHERE accountId=?",
+      [req.params.accountId],
+      (error: any, rows: any) => {
+        if (error) return res.status(500).json({ error, msg: error.message });
+        if (rows.length == 0) return res.json({ accountIsValid: "invalid" });
+        res.json({ account: rows });
+      }
+    );
+  });
+});
+
 controller.get("/user/:id", async (req, res) => {
   db.serialize(() => {
     db.all(
@@ -55,7 +69,10 @@ controller.get('/user/:id/info', async (req, res) => {
 
 controller.get('/user/:id/transactions', async (req, res) => {
   db.serialize(() => {
-    db.all("SELECT * FROM Transaction WHERE ")
+    db.all("SELECT * FROM TransactionPerAccount WHERE accountSender=? OR accountReceiver=?", [req.params.id], (error: Error, rows: any) => {
+      if (error) return res.status(500).json({ error, msg: error.message })
+      res.json({ rows })
+    })
   })
 })
 
@@ -105,5 +122,37 @@ controller.post("/card-register", async (req, res) => {
     );
   });
 });
+
+controller.post("/transaction-register", async (req, res) => {
+  db.serialize(() => {
+    db.run(
+      "INSERT INTO TransactionPerAccount (transactionValue, accountSender, accountReceiver) VALUES (?,?,?)",
+      [
+        req.body.transactionValue,
+        req.body.accountSender,
+        req.body.accountReceiver
+      ]
+    )
+  })
+})
+
+// PATCHes
+controller.patch('/transaction/remove-from-balance', async (req, res) => {
+  db.serialize(() => {
+    db.run(
+      "UPDATE Account SET balance=balance-? WHERE accountId=?",
+      [req.body.valueTransfer, req.body.accountId]
+    )
+  })
+})
+
+controller.patch('/transaction/add-in-balance', async (req, res) => {
+  db.serialize(() => {
+    db.run(
+      "UPDATE Account SET balance=balance+? WHERE accountId=?",
+      [req.body.valueTransfer, req.body.accountId]
+    )
+  })
+})
 
 export { controller };
