@@ -4,11 +4,11 @@ Senai semester final project.
 
 # How To Use
 
-To clone and run this app, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) and [PNPN](https://pnpm.io/) installed in your machine.
+To clone and run this app, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) and [PNPM](https://pnpm.io/) installed in your machine.
 To run frontend (in frontend root):
 
 ```bash
-# Link and Update dependencies
+# Link and update dependencies
 pnpm install
 
 # Start app
@@ -18,7 +18,7 @@ pnpm run dev
 To run backend (in backend root):
 
 ```bash
-# Link and Update dependencies
+# Link and update dependencies
 pnpm install
 
 # Start app
