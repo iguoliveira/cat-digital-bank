@@ -130,7 +130,7 @@
 
           & > .send-received {
             font-size: 0.8rem;
-            color: rgb(153, 153, 153);
+            color: $transaction-subtitle-1000;
             opacity: 0.8;
           }
 
@@ -150,6 +150,13 @@
             & > .received {
               color: green;
             }
+          }
+
+          & > .type {
+            text-transform: uppercase;
+            opacity: 0.8;
+            color: $transaction-subtitle-1000;
+            font-size: 0.8rem;
           }
         }
       }

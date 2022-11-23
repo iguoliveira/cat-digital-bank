@@ -72,9 +72,10 @@ export const Profile = () => {
                             data.map((item: any, index: any) => {
                                 return (
                                     <div className='transaction' key={index}>
-                                        <div className='send-received'>{item.accountSender == user?.userAccountNumberFk ? `To ${item.accountReceiver}` : `From ${item.accountSender}`}</div>
+                                        <div className='send-received'>{item.transactionType == 'pix' ? item.accountSender == user?.userAccountNumberFk ? `To ${item.accountReceiver}` : `From ${item.accountSender}` : ''}</div>
                                         <div className='value'>R$ {item.transactionValue}</div>
-                                        <div className='verb'>{item.accountSender == user?.userAccountNumberFk ? (<span className='sent'>enviado</span>) : (<span className='received'>recebido</span>)}</div>
+                                        <div className='verb'>{item.transactionType == 'pix' ? item.accountSender == user?.userAccountNumberFk ? (<span className='sent'>enviado</span>) : (<span className='received'>recebido</span>) : item.transactionType == 'deposit' ? (<span className='received'>depositado</span>) : (<span className='sent'>transferido</span>)}</div>
+                                        <div className='type'>{item.transactionType}</div>
                                     </div>
                                 )
                             })
