@@ -23,10 +23,8 @@ export const CreateCard = () => {
             " " +
             parseInt((Math.random() * (9999 - 1000 + 1) + 1000).toString()).toString(),
         ccv: parseInt((Math.random() * (999 - 100 + 1) + 100).toString()).toString(),
-        expiration:
-            parseInt((Math.random() * (12 - 1 + 1) + 1).toString()).toString() +
-            "/" +
-            parseInt((Math.random() * (32 - 28 + 1) + 28).toString()).toString(),
+        expirationMonth: parseInt((Math.random() * (12 - 1 + 1) + 1).toString()).toString(),
+        expirationYear: parseInt((Math.random() * (32 - 28 + 1) + 28).toString()).toString(),
         plan: 'platinum',
         type: 'credit',
         cardPassword: '',

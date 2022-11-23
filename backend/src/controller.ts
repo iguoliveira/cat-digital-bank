@@ -58,23 +58,31 @@ controller.get("/card/:id", async (req, res) => {
   });
 });
 
-controller.get('/user/:id/info', async (req, res) => {
+controller.get("/user/:id/info", async (req, res) => {
   db.serialize(() => {
-    db.all("SELECT * FROM Account a INNER JOIN Card c ON c.cardAccountNumberFk=a.accountId INNER JOIN User u ON u.userAccountNumberFk=a.accountId WHERE a.accountId=?", [req.params.id], (error: Error, rows: any) => {
-      if (error) return res.status(500).json({ error, msg: error.message })
-      res.json({ rows })
-    })
-  })
-})
+    db.all(
+      "SELECT * FROM Account a INNER JOIN Card c ON c.cardAccountNumberFk=a.accountId INNER JOIN User u ON u.userAccountNumberFk=a.accountId WHERE a.accountId=?",
+      [req.params.id],
+      (error: Error, rows: any) => {
+        if (error) return res.status(500).json({ error, msg: error.message });
+        res.json({ rows });
+      }
+    );
+  });
+});
 
-controller.get('/user/:id/transactions', async (req, res) => {
+controller.get("/user/:id/transactions", async (req, res) => {
   db.serialize(() => {
-    db.all("SELECT * FROM TransactionPerAccount WHERE accountSender=? OR accountReceiver=?", [req.params.id, req.params.id], (error: Error, rows: any) => {
-      if (error) return res.status(500).json({ error, msg: error.message })
-      res.json({ rows })
-    })
-  })
-})
+    db.all(
+      "SELECT * FROM TransactionPerAccount WHERE accountSender=? OR accountReceiver=?",
+      [req.params.id, req.params.id],
+      (error: Error, rows: any) => {
+        if (error) return res.status(500).json({ error, msg: error.message });
+        res.json({ rows });
+      }
+    );
+  });
+});
 
 // POSTs
 controller.post("/user-register", async (req, res) => {
@@ -88,7 +96,7 @@ controller.post("/user-register", async (req, res) => {
         req.body.sex,
         req.body.email,
         req.body.password,
-        req.body.userAccountNumberFk
+        req.body.userAccountNumberFk,
       ]
     );
   });
@@ -96,24 +104,22 @@ controller.post("/user-register", async (req, res) => {
 
 controller.post("/account-register", async (req, res) => {
   db.serialize(() => {
-    db.run(
-      "INSERT INTO Account (accountId, balance) VALUES (?,?)",
-      [
-        req.body.accountId,
-        req.body.balance
-      ]
-    );
+    db.run("INSERT INTO Account (accountId, balance) VALUES (?,?)", [
+      req.body.accountId,
+      req.body.balance,
+    ]);
   });
 });
 
 controller.post("/card-register", async (req, res) => {
   db.serialize(() => {
     db.run(
-      "INSERT INTO Card (cardNumber, ccv, expiration, plan, type, cardPassword, cardAccountNumberFk) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO Card (cardNumber, ccv, expirationMonth, expirationYear, plan, type, cardPassword, cardAccountNumberFk) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       [
         req.body.cardNumber,
         req.body.ccv,
-        req.body.expiration,
+        req.body.expirationMonth,
+        req.body.expirationYear,
         req.body.plan,
         req.body.type,
         req.body.cardPassword,
@@ -130,29 +136,29 @@ controller.post("/transaction-register", async (req, res) => {
       [
         req.body.transactionValue,
         req.body.accountSender,
-        req.body.accountReceiver
+        req.body.accountReceiver,
       ]
-    )
-  })
-})
+    );
+  });
+});
 
 // PATCHes
-controller.patch('/transaction/remove-from-balance', async (req, res) => {
+controller.patch("/transaction/remove-from-balance", async (req, res) => {
   db.serialize(() => {
-    db.run(
-      "UPDATE Account SET balance=balance-? WHERE accountId=?",
-      [req.body.valueTransfer, req.body.accountId]
-    )
-  })
-})
+    db.run("UPDATE Account SET balance=balance-? WHERE accountId=?", [
+      req.body.valueTransfer,
+      req.body.accountId,
+    ]);
+  });
+});
 
-controller.patch('/transaction/add-in-balance', async (req, res) => {
+controller.patch("/transaction/add-in-balance", async (req, res) => {
   db.serialize(() => {
-    db.run(
-      "UPDATE Account SET balance=balance+? WHERE accountId=?",
-      [req.body.valueTransfer, req.body.accountId]
-    )
-  })
-})
+    db.run("UPDATE Account SET balance=balance+? WHERE accountId=?", [
+      req.body.valueTransfer,
+      req.body.accountId,
+    ]);
+  });
+});
 
 export { controller };

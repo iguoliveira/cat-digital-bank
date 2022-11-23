@@ -88,22 +88,24 @@
       align-items: center;
       justify-content: center;
       gap: 2rem;
+      height: 20rem;
 
       & > .card-container {
         background-color: rgb(238, 238, 238);
         padding: 2rem;
         max-width: fit-content;
-        box-shadow: 0 0 5px inset black;
+        box-shadow: 0 0 4px inset black;
         display: flex;
         flex-direction: column;
-        gap: 2.5rem;
+        height: 100%;
+        border-radius: $rounded;
       }
 
       & > .transactions-container {
         display: flex;
         flex-direction: column;
         overflow-y: scroll;
-        height: 25rem;
+        height: 100%;
         width: fit-content;
         box-shadow: 0 0 4px inset black;
         padding: 2rem;

@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { useUserStore } from '../stores/user'
 import { getUserTransactions } from '../fetchers/transaction'
 import { useQuery } from '@tanstack/react-query'
+import { Card } from 'react-pay-card'
 
 export const Profile = () => {
     document.title = 'User Profile'
@@ -64,14 +65,13 @@ export const Profile = () => {
                 </article>
                 <article className='bank-card-transactions-container'>
                     <div className='card-container'>
-                        <BankCardFront name={info.name} />
-                        <BankCardBack number={info.cardNumber} expiration={info.expiration} plan={info.plan} ccv={info.ccv} />
+                        <Card cardCvv={info.ccv} cardHolder={info.name} cardMonth={info.expirationMonth} cardNumber={info.cardNumber} cardYear={info.expirationYear} />
                     </div>
                     <div className='transactions-container'>
                         {!isLoading && (
                             data.map((item: any, index: any) => {
                                 return (
-                                    <div className='transaction'>
+                                    <div className='transaction' key={index}>
                                         <div className='send-received'>{item.accountSender == user?.userAccountNumberFk ? `To ${item.accountReceiver}` : `From ${item.accountSender}`}</div>
                                         <div className='value'>R$ {item.transactionValue}</div>
                                         <div className='verb'>{item.accountSender == user?.userAccountNumberFk ? (<span className='sent'>enviado</span>) : (<span className='received'>recebido</span>)}</div>
