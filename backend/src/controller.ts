@@ -84,6 +84,18 @@ controller.get("/user/:id/transactions", async (req, res) => {
   });
 });
 
+controller.get("/user/accounts/:id", async (req, res) => {
+  db.serialize(() => {
+    db.all(
+      `SELECT * FROM Account WHERE accountId LIKE '%${req.params.id}%'`,
+      (error: Error, rows: any) => {
+        if (error) return res.status(500).json({ error, msg: error.message });
+        res.json({ rows });
+      }
+    );
+  });
+});
+
 // POSTs
 controller.post("/user-register", async (req, res) => {
   db.serialize(() => {

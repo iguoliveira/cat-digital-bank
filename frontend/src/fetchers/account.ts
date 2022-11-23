@@ -18,3 +18,9 @@ export const removeFromBalance = async (data: any) => {
 export const addInBalance = async (data: any) => {
     const res = await axios.patch(`${URL}/transaction/add-in-balance`, data)
 }
+
+export const findMany = async ({ queryKey }: any) => {
+    const [_, accountReceiver] = queryKey
+    const res = await axios.get(`${URL}/user/accounts/${accountReceiver}`)
+    return res.data.rows
+}
