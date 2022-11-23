@@ -4,7 +4,6 @@ import ProfilePhoto from '../assets/user-profile-photo.png'
 import Show from '../assets/visible-icon.png'
 import Hide from '../assets/hide-icon.png'
 import { useLoaderData, useNavigate } from "react-router-dom"
-import { BankCardBack, BankCardFront } from "../components/BankCard"
 import { useEffect, useState } from 'react'
 import { useUserStore } from '../stores/user'
 import { getUserTransactions } from '../fetchers/transaction'
