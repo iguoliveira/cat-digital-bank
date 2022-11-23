@@ -1,6 +1,10 @@
 @import "../variables.scss";
 
 .user-profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
   & > .user-photo-container {
     position: relative;
     margin-bottom: 5rem;
@@ -14,11 +18,50 @@
       position: absolute;
       bottom: -5rem;
       left: 2.5rem;
+      width: 15rem;
     }
   }
 
-  & > div {
-    width: 100%;
+  & > .name-balance-container {
+    position: relative;
+    left: 2.5rem;
+    width: fit-content;
+
+    & > .user-name {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    & > .balance {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      width: fit-content;
+
+      & > .balance-name {
+        display: flex;
+        gap: 0.5rem;
+
+        & > .title {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+
+        & > img {
+          width: 3rem;
+          cursor: pointer;
+        }
+      }
+
+      & > .balance-value {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  & > .other-data {
     display: flex;
     justify-content: space-between;
 
@@ -30,40 +73,19 @@
       gap: 2rem;
       width: fit-content;
 
-      & > .name-balance-data {
-        width: fit-content;
-
-        & > span {
-          font-size: 2rem;
-          font-weight: bold;
-        }
-
-        & > .balance {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          width: fit-content;
-
-          & > span {
-            font-size: 2rem;
-            font-weight: bold;
-          }
-
-          & > img {
-            width: 3rem;
-            cursor: pointer;
-          }
-        }
-      }
-
       & > .user-data {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: auto auto;
         gap: 0.5rem;
         width: fit-content;
+        box-shadow: 0 0 4px black;
+        padding: 2rem;
+        border-radius: $rounded;
+        height: 20rem;
 
-        & > div {
+        & > .data-box {
+          padding: 1rem;
+
           & > .title {
             font-weight: bold;
             font-size: 1.5rem;
@@ -91,10 +113,9 @@
       height: 20rem;
 
       & > .card-container {
-        background-color: rgb(238, 238, 238);
         padding: 2rem;
         max-width: fit-content;
-        box-shadow: 0 0 4px inset black;
+        box-shadow: 0 0 4px black;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -107,10 +128,27 @@
         overflow-y: scroll;
         height: 100%;
         width: fit-content;
-        box-shadow: 0 0 4px inset black;
+        box-shadow: 0 0 4px black;
         padding: 2rem;
         border-radius: $rounded;
         gap: 1rem;
+
+        /* width */
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
 
         & > .transaction {
           padding: 0.5rem;

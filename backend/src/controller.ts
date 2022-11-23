@@ -74,7 +74,7 @@ controller.get("/user/:id/info", async (req, res) => {
 controller.get("/user/:id/transactions", async (req, res) => {
   db.serialize(() => {
     db.all(
-      "SELECT * FROM TransactionPerAccount WHERE accountSender=? OR accountReceiver=?",
+      "SELECT * FROM TransactionPerAccount WHERE accountSender=? OR accountReceiver=? ORDER BY transactionId desc",
       [req.params.id, req.params.id],
       (error: Error, rows: any) => {
         if (error) return res.status(500).json({ error, msg: error.message });
@@ -84,10 +84,10 @@ controller.get("/user/:id/transactions", async (req, res) => {
   });
 });
 
-controller.get("/user/accounts/:id", async (req, res) => {
+controller.get("/user/accounts/:id/:personAccount", async (req, res) => {
   db.serialize(() => {
     db.all(
-      `SELECT * FROM Account WHERE accountId LIKE '%${req.params.id}%'`,
+      `SELECT * FROM Account WHERE accountId LIKE '%${req.params.id}%' and accountId!=${req.params.personAccount}`,
       (error: Error, rows: any) => {
         if (error) return res.status(500).json({ error, msg: error.message });
         res.json({ rows });

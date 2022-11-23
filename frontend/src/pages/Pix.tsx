@@ -28,15 +28,11 @@ export const Pix = () => {
     })
 
     const { data: isValid } = useQuery(['accountIsValid', inputs.accountReceiver || '1'], accountIsValid)
-    const { data: accounts, isLoading } = useQuery(['fetchAllAccounts', inputs.accountReceiver || '1111111'], findMany)
+    const { data: accounts, isLoading } = useQuery(['fetchAllAccounts', inputs.accountReceiver || '1111111', user?.userAccountNumberFk], findMany)
 
     const makeTransaction = useMutation(postTransaction)
     const removeBalance = useMutation(removeFromBalance)
-    const addBalance = useMutation(addInBalance, {
-        onSuccess: () => {
-            Notify.success('PIX Feito', { clickToClose: true, timeout: 2000 })
-        }
-    })
+    const addBalance = useMutation(addInBalance)
 
     useEffect(() => {
         if (!user) navigate('/')
@@ -103,7 +99,7 @@ export const Pix = () => {
                 <h1 className="title">PIX</h1>
                 <Input type='number' spanName='Value' inputName='transactionValue' placeholder='Value' value={inputs.transactionValue} onChange={(event: any) => handleChange(event)} required={true} />
                 <div className='account-autocomplete'>
-                    <Input type='text' spanName='Receiver' inputName='accountReceiver' placeholder='Account number' value={inputs.accountReceiver} onChange={(event: any) => handleChange(event)} required={true} />
+                    <Input type='text' spanName='Receiver' inputName='accountReceiver' placeholder='Account number' value={inputs.accountReceiver} onChange={(event: any) => handleChange(event)} required={true} autoComplete={'off'} />
                     {!isLoading && inputs.accountReceiver.split('').length < 6 && accounts.map((item: any, index: any) => {
                         return <button key={index} className="accounts-items" onClick={() => { autocompleteInsertion(item.accountId) }}>{item.accountId}</button>
                     })}

@@ -30,33 +30,36 @@ export const Profile = () => {
                 <img src={Banner} className="banner" />
                 <img src={ProfilePhoto} className="profile-photo" />
             </article>
-            <div>
-                <article className='user-data-container'>
-                    <div className='name-balance-data'>
-                        <span>{info.name}</span>
-                        <div className='balance'>
-                            <span>R$ {visible ? info.balance : ('-'.repeat(info.balance.toString().split('').length))}</span>
-                            <img src={!visible ? Show : Hide} onClick={() => isVisible(!visible)} />
-                        </div>
+            <article className='name-balance-container'>
+                <span className='user-name'>{info.name}</span>
+                <div className='balance'>
+                    <div className='balance-name'>
+                        <img src={!visible ? Show : Hide} onClick={() => isVisible(!visible)} />
+                        <span className='title'>Balance:</span>
                     </div>
+                    <span className='balance-value'>R$ {visible ? info.balance : ('-'.repeat(info.balance.toString().split('').length))}</span>
+                </div>
+            </article>
+            <div className='other-data'>
+                <article className='user-data-container'>
                     <div className='user-data'>
-                        <div>
+                        <div className='data-box'>
                             <span className='title'>Email: </span>
                             <span className='data'>{info.email}</span>
                         </div>
-                        <div>
+                        <div className='data-box'>
                             <span className='title'>Account Number: </span>
                             <span className='data'>{info.accountId}</span>
                         </div>
-                        <div>
+                        <div className='data-box'>
                             <span className='title'>CPF: </span>
                             <span className='data'>{info.cpf}</span>
                         </div>
-                        <div>
+                        <div className='data-box'>
                             <span className='title'>Age: </span>
                             <span className='data'>{info.age}</span>
                         </div>
-                        <div>
+                        <div className='data-box'>
                             <span className='title'>Sex: </span>
                             <span className='data'>{info.sex}</span>
                         </div>

@@ -20,7 +20,7 @@ export const addInBalance = async (data: any) => {
 }
 
 export const findMany = async ({ queryKey }: any) => {
-    const [_, accountReceiver] = queryKey
-    const res = await axios.get(`${URL}/user/accounts/${accountReceiver}`)
+    const [_, accountReceiver, personAccount] = queryKey
+    const res = await axios.get(`${URL}/user/accounts/${accountReceiver}/${personAccount}`)
     return res.data.rows
 }

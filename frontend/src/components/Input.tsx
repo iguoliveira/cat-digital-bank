@@ -10,6 +10,7 @@ interface InputProps {
     onChange: any
     maxlength?: any
     required?: boolean
+    autoComplete?: string
 }
 
 interface SelectProps {
@@ -26,11 +27,11 @@ interface ButtonProps {
     type?: any
 }
 
-export const Input = ({ spanName, inputName, type, placeholder, value, onChange, maxlength, required }: InputProps) => {
+export const Input = ({ spanName, inputName, type, placeholder, value, onChange, maxlength, required, autoComplete }: InputProps) => {
     return (
         <div className='input-content'>
             <span className='block'>{spanName}</span>
-            <input name={inputName} type={type} placeholder={`${placeholder}`} value={value} onChange={onChange} maxLength={maxlength} required={required} />
+            <input name={inputName} type={type} placeholder={`${placeholder}`} value={value} onChange={onChange} maxLength={maxlength} required={required} autoComplete={autoComplete} />
         </div>
     )
 }
