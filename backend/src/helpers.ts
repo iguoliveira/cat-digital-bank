@@ -27,7 +27,7 @@ export const createCardTable = async () => {
 export const createTransactionTable = async () => {
   db.serialize(() => {
     db.exec(
-      "CREATE TABLE IF NOT EXISTS TransactionPerAccount (transactionId INTEGER PRIMARY KEY, transactionValue NUMERIC, accountSender TEXT, accountReceiver TEXT, FOREIGN KEY (accountSender) REFERENCES Account(accountId), FOREIGN KEY (accountReceiver) REFERENCES Account(accountId))"
+      "CREATE TABLE IF NOT EXISTS TransactionPerAccount (transactionId INTEGER PRIMARY KEY, transactionType TEXT, transactionValue NUMERIC, accountSender TEXT, accountReceiver TEXT, FOREIGN KEY (accountSender) REFERENCES Account(accountId), FOREIGN KEY (accountReceiver) REFERENCES Account(accountId))"
     );
   });
 };

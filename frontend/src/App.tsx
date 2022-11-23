@@ -8,6 +8,7 @@ import { Signup } from "./pages/Signup";
 import { Profile } from "./pages/Profile";
 import { CreateCard } from "./pages/CreateCard";
 import { Pix } from "./pages/Pix";
+import { Deposit } from "./pages/Deposit";
 
 export const URL = "http://localhost:8000"
 
@@ -56,6 +57,10 @@ export const App = () => {
           loader: async ({ params }) => {
             return axios.get(`${URL}/user/${params.id}/info`).then(res => res.data.rows[0])
           }
+        },
+        {
+          path: 'deposit',
+          element: <Deposit />
         }
       ]
     }

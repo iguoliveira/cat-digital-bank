@@ -15,6 +15,7 @@ export const Pix = () => {
 
     const [inputs, setInputs] = useState({
         transactionValue: 1,
+        transactionType: 'pix',
         accountSender: user?.userAccountNumberFk,
         accountReceiver: ''
     })

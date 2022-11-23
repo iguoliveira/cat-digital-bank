@@ -132,9 +132,10 @@ controller.post("/card-register", async (req, res) => {
 controller.post("/transaction-register", async (req, res) => {
   db.serialize(() => {
     db.run(
-      "INSERT INTO TransactionPerAccount (transactionValue, accountSender, accountReceiver) VALUES (?,?,?)",
+      "INSERT INTO TransactionPerAccount (transactionValue, transactionType, accountSender, accountReceiver) VALUES (?,?,?,?)",
       [
         req.body.transactionValue,
+        req.body.transactionType,
         req.body.accountSender,
         req.body.accountReceiver,
       ]
