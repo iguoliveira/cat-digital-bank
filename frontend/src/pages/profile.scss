@@ -1,0 +1,203 @@
+@import "../variables.scss";
+
+.user-profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  & > .user-photo-container {
+    position: relative;
+    margin-bottom: 5rem;
+
+    & > .banner {
+      width: 100%;
+      height: 40rem;
+    }
+
+    & > .profile-photo {
+      position: absolute;
+      bottom: -5rem;
+      left: 2.5rem;
+      width: 15rem;
+    }
+  }
+
+  & > .name-balance-container {
+    position: relative;
+    left: 2.5rem;
+    width: fit-content;
+
+    & > .user-name {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    & > .balance {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      width: fit-content;
+
+      & > .balance-name {
+        display: flex;
+        gap: 0.5rem;
+
+        & > .title {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+
+        & > img {
+          width: 3rem;
+          cursor: pointer;
+        }
+      }
+
+      & > .balance-value {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  & > .other-data {
+    display: flex;
+    justify-content: space-between;
+
+    .user-data-container {
+      position: relative;
+      left: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: fit-content;
+
+      & > .user-data {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 0.5rem;
+        width: fit-content;
+        box-shadow: 0 0 4px black;
+        padding: 2rem;
+        border-radius: $rounded;
+        height: 20rem;
+
+        & > .data-box {
+          padding: 1rem;
+
+          & > .title {
+            font-weight: bold;
+            font-size: 1.5rem;
+          }
+
+          & > .data {
+            font-size: 1.5rem;
+            display: block;
+
+            &::first-letter {
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
+    }
+
+    & > .bank-card-transactions-container {
+      position: relative;
+      right: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      height: 20rem;
+
+      & > .card-container {
+        padding: 2rem;
+        max-width: fit-content;
+        box-shadow: 0 0 4px black;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border-radius: $rounded;
+      }
+
+      & > .transactions-container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: 100%;
+        width: fit-content;
+        box-shadow: 0 0 4px black;
+        padding: 2rem;
+        border-radius: $rounded;
+        gap: 1rem;
+
+        /* width */
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+
+        & > .transaction {
+          padding: 0.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          background-color: whitesmoke;
+          border-radius: $rounded;
+          cursor: pointer;
+          box-shadow: 0 0 4px black;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          & > .send-received {
+            font-size: 0.8rem;
+            color: $transaction-subtitle-1000;
+            opacity: 0.8;
+          }
+
+          & > .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+          }
+
+          & > .verb {
+            text-transform: uppercase;
+            font-weight: bold;
+
+            & > .sent {
+              color: red;
+            }
+
+            & > .received {
+              color: green;
+            }
+          }
+
+          & > .type {
+            text-transform: uppercase;
+            opacity: 0.8;
+            color: $transaction-subtitle-1000;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

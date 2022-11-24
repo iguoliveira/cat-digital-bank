@@ -1,0 +1,46 @@
+@import "../variables.scss";
+
+.login-content {
+  background-color: $main-1000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  & > a > img {
+    position: absolute;
+    top: 1.05rem;
+    left: 1.2rem;
+    width: $logo-width;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  & > form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: $rounded;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+    & > .title {
+      text-align: center;
+    }
+  }
+
+  & > .go-to-signup {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+  }
+}
