@@ -2,200 +2,191 @@
 
 .user-profile-content {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
 
-  & > .user-photo-container {
-    position: relative;
-    margin-bottom: 5rem;
+  & > .core-data {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
 
-    & > .banner {
+    & > .user-photo-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      & > .banner {
+        width: 100%;
+      }
+
+      & > .profile-photo {
+        position: absolute;
+        bottom: -5rem;
+        width: 15rem;
+      }
+    }
+
+    & > .name-balance-container {
+      position: relative;
       width: 100%;
-      height: 40rem;
-    }
-
-    & > .profile-photo {
-      position: absolute;
-      bottom: -5rem;
-      left: 2.5rem;
-      width: 15rem;
-    }
-  }
-
-  & > .name-balance-container {
-    position: relative;
-    left: 2.5rem;
-    width: fit-content;
-
-    & > .user-name {
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-
-    & > .balance {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 0.5rem;
-      width: fit-content;
+      gap: 1rem;
 
-      & > .balance-name {
+      & > .user-name {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      & > .balance {
         display: flex;
-        gap: 0.5rem;
+        align-items: center;
+        justify-content: space-around;
 
-        & > .title {
-          font-size: 2rem;
-          font-weight: bold;
+        & > .balance-data {
+          display: flex;
+          flex-direction: column;
+
+          & > .title {
+            font-size: 2rem;
+            font-weight: bold;
+          }
+
+          & > .balance-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+          }
         }
 
-        & > img {
+        & > .is-show {
           width: 3rem;
           cursor: pointer;
         }
       }
+    }
 
-      & > .balance-value {
-        font-size: 2rem;
-        font-weight: bold;
+    & > .user-data-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 0.5rem;
+      width: fit-content;
+      box-shadow: 0 0 4px black;
+      padding: 2rem;
+      border-radius: $rounded;
+      height: 20rem;
+
+      & > .data-box {
+        padding: 1rem;
+
+        & > .title {
+          font-weight: bold;
+          font-size: 1.5rem;
+        }
+
+        & > .data {
+          font-size: 1.5rem;
+          display: block;
+
+          &::first-letter {
+            text-transform: capitalize;
+          }
+        }
       }
     }
   }
 
   & > .other-data {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 20rem;
 
-    .user-data-container {
-      position: relative;
-      left: 2.5rem;
+    & > .card-container {
+      padding: 2rem;
+      max-width: fit-content;
+      box-shadow: 0 0 4px black;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      width: fit-content;
-
-      & > .user-data {
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 0.5rem;
-        width: fit-content;
-        box-shadow: 0 0 4px black;
-        padding: 2rem;
-        border-radius: $rounded;
-        height: 20rem;
-
-        & > .data-box {
-          padding: 1rem;
-
-          & > .title {
-            font-weight: bold;
-            font-size: 1.5rem;
-          }
-
-          & > .data {
-            font-size: 1.5rem;
-            display: block;
-
-            &::first-letter {
-              text-transform: capitalize;
-            }
-          }
-        }
-      }
+      height: 100%;
+      border-radius: $rounded;
     }
 
-    & > .bank-card-transactions-container {
-      position: relative;
-      right: 2.5rem;
+    & > .transactions-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      height: 20rem;
+      flex-direction: column;
+      overflow-y: scroll;
+      height: 100%;
+      width: fit-content;
+      box-shadow: 0 0 4px black;
+      padding: 2rem;
+      border-radius: $rounded;
+      gap: 1rem;
 
-      & > .card-container {
-        padding: 2rem;
-        max-width: fit-content;
-        box-shadow: 0 0 4px black;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        border-radius: $rounded;
+      /* width */
+      &::-webkit-scrollbar {
+        width: 8px;
       }
 
-      & > .transactions-container {
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      & > .transaction {
+        padding: 0.5rem;
         display: flex;
         flex-direction: column;
-        overflow-y: scroll;
-        height: 100%;
-        width: fit-content;
-        box-shadow: 0 0 4px black;
-        padding: 2rem;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background-color: whitesmoke;
         border-radius: $rounded;
-        gap: 1rem;
+        cursor: pointer;
+        box-shadow: 0 0 4px black;
 
-        /* width */
-        &::-webkit-scrollbar {
-          width: 8px;
+        &:hover {
+          opacity: 0.8;
         }
 
-        &::-webkit-scrollbar-track {
-          background: transparent;
+        & > .send-received {
+          font-size: 0.8rem;
+          color: $transaction-subtitle-1000;
+          opacity: 0.8;
         }
 
-        &::-webkit-scrollbar-thumb {
-          background: #888;
+        & > .value {
+          font-size: 1.5rem;
+          font-weight: bold;
         }
 
-        &::-webkit-scrollbar-thumb:hover {
-          background: #555;
+        & > .verb {
+          text-transform: uppercase;
+          font-weight: bold;
+
+          & > .sent {
+            color: red;
+          }
+
+          & > .received {
+            color: green;
+          }
         }
 
-        & > .transaction {
-          padding: 0.5rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          background-color: whitesmoke;
-          border-radius: $rounded;
-          cursor: pointer;
-          box-shadow: 0 0 4px black;
-
-          &:hover {
-            opacity: 0.8;
-          }
-
-          & > .send-received {
-            font-size: 0.8rem;
-            color: $transaction-subtitle-1000;
-            opacity: 0.8;
-          }
-
-          & > .value {
-            font-size: 1.5rem;
-            font-weight: bold;
-          }
-
-          & > .verb {
-            text-transform: uppercase;
-            font-weight: bold;
-
-            & > .sent {
-              color: red;
-            }
-
-            & > .received {
-              color: green;
-            }
-          }
-
-          & > .type {
-            text-transform: uppercase;
-            opacity: 0.8;
-            color: $transaction-subtitle-1000;
-            font-size: 0.8rem;
-          }
+        & > .type {
+          text-transform: uppercase;
+          opacity: 0.8;
+          color: $transaction-subtitle-1000;
+          font-size: 0.8rem;
         }
       }
     }
