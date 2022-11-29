@@ -41,6 +41,8 @@ export const Profile = () => {
                         <img className='is-show' src={!visible ? Show : Hide} onClick={() => isVisible(!visible)} />
                     </div>
                 </article>
+            </div>
+            <article className='other-data'>
                 <article className='user-data-container'>
                     <div className='data-box'>
                         <span className='title'>Email: </span>
@@ -63,11 +65,6 @@ export const Profile = () => {
                         <span className='data'>{info.sex}</span>
                     </div>
                 </article>
-            </div>
-            <article className='other-data'>
-                <div className='card-container'>
-                    <Card cardCvv={info.ccv} cardHolder={info.name} cardMonth={info.expirationMonth} cardNumber={info.cardNumber} cardYear={info.expirationYear} />
-                </div>
                 <div className='transactions-container'>
                     {!isLoading && (
                         data.map((item: any, index: any) => {
@@ -81,6 +78,9 @@ export const Profile = () => {
                             )
                         })
                     )}
+                </div>
+                <div className='card-container'>
+                    <Card cardCvv={info.ccv} cardHolder={info.name} cardMonth={info.expirationMonth} cardNumber={info.cardNumber} cardYear={info.expirationYear} />
                 </div>
             </article>
         </section>
