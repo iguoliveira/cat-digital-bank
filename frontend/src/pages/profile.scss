@@ -195,6 +195,10 @@
             text-transform: capitalize;
           }
         }
+
+        &>.clickable {
+          cursor: pointer;
+        }
       }
     }
   }
