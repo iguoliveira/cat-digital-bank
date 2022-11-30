@@ -13,9 +13,20 @@ import { Card } from 'react-pay-card'
 export const Profile = () => {
     document.title = 'User Profile'
     const [user] = useUserStore((state) => [state.user])
-    const [visible, isVisible] = useState(false)
+    const [isVisible, setVisible] = useState({
+        balance: false,
+        accountId: false,
+        cpf: false
+    })
     const info: any = useLoaderData()
     const navigate = useNavigate()
+
+    function handleVisibility(data: string, value: boolean) {
+        setVisible({
+            ...isVisible,
+            [data]: !value
+        })
+    }
 
 
     useEffect(() => {
@@ -26,65 +37,63 @@ export const Profile = () => {
 
     return (
         <section className='user-profile-content'>
-            <article className='user-photo-container'>
-                <img src={Banner} className="banner" />
-                <img src={ProfilePhoto} className="profile-photo" />
-            </article>
-            <article className='name-balance-container'>
-                <span className='user-name'>{info.name}</span>
-                <div className='balance'>
-                    <div className='balance-name'>
-                        <img src={!visible ? Show : Hide} onClick={() => isVisible(!visible)} />
-                        <span className='title'>Balance:</span>
-                    </div>
-                    <span className='balance-value'>R$ {visible ? info.balance : ('-'.repeat(info.balance.toString().split('').length))}</span>
-                </div>
-            </article>
-            <div className='other-data'>
-                <article className='user-data-container'>
-                    <div className='user-data'>
-                        <div className='data-box'>
-                            <span className='title'>Email: </span>
-                            <span className='data'>{info.email}</span>
-                        </div>
-                        <div className='data-box'>
-                            <span className='title'>Account Number: </span>
-                            <span className='data'>{info.accountId}</span>
-                        </div>
-                        <div className='data-box'>
-                            <span className='title'>CPF: </span>
-                            <span className='data'>{info.cpf}</span>
-                        </div>
-                        <div className='data-box'>
-                            <span className='title'>Age: </span>
-                            <span className='data'>{info.age}</span>
-                        </div>
-                        <div className='data-box'>
-                            <span className='title'>Sex: </span>
-                            <span className='data'>{info.sex}</span>
-                        </div>
-                    </div>
+            <div className='core-data'>
+                <article className='user-photo-container'>
+                    <img src={Banner} className="banner" />
+                    <img src={ProfilePhoto} className="profile-photo" />
                 </article>
-                <article className='bank-card-transactions-container'>
-                    <div className='card-container'>
-                        <Card cardCvv={info.ccv} cardHolder={info.name} cardMonth={info.expirationMonth} cardNumber={info.cardNumber} cardYear={info.expirationYear} />
-                    </div>
-                    <div className='transactions-container'>
-                        {!isLoading && (
-                            data.map((item: any, index: any) => {
-                                return (
-                                    <div className='transaction' key={index}>
-                                        <div className='send-received'>{item.transactionType == 'pix' ? item.accountSender == user?.userAccountNumberFk ? `To ${item.accountReceiver}` : `From ${item.accountSender}` : ''}</div>
-                                        <div className='value'>R$ {item.transactionValue}</div>
-                                        <div className='verb'>{item.transactionType == 'pix' ? item.accountSender == user?.userAccountNumberFk ? (<span className='sent'>enviado</span>) : (<span className='received'>recebido</span>) : item.transactionType == 'deposit' ? (<span className='received'>depositado</span>) : (<span className='sent'>transferido</span>)}</div>
-                                        <div className='type'>{item.transactionType}</div>
-                                    </div>
-                                )
-                            })
-                        )}
+                <article className='name-balance-container'>
+                    <div className='user-name'><span>{info.name}</span></div>
+                    <div className='balance'>
+                        <div className='balance-data'>
+                            <span className='title'>Balance</span>
+                            <span className='balance-value'>R$ {isVisible.balance ? info.balance : ('-'.repeat(info.balance.toString().split('').length))}</span>
+                        </div>
+                        <img className='is-show' src={!isVisible.balance ? Show : Hide} onClick={() => handleVisibility('balance', isVisible.balance)} />
                     </div>
                 </article>
             </div>
+            <article className='other-data'>
+                <article className='user-data-container'>
+                    <div className='data-box'>
+                        <span className='title'>Email: </span>
+                        <span className='data'>{info.email}</span>
+                    </div>
+                    <div className='data-box'>
+                        <span className='title'>Account Number: </span>
+                        <span className='clickable data' onClick={() => handleVisibility('accountId', isVisible.accountId)}>{isVisible.accountId ? info.accountId : '*'.repeat(info.accountId.split("").length - 1) + info.accountId.split("").slice(-1)}</span>
+                    </div>
+                    <div className='data-box'>
+                        <span className='title'>CPF: </span>
+                        <span className='clickable data' onClick={() => handleVisibility('cpf', isVisible.cpf)}>{isVisible.cpf ? info.cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4") : '*'.repeat(info.cpf.split('').length - 2) + '-' + info.cpf.split('')[info.cpf.split('').length - 1] + info.cpf.split('')[info.cpf.split('').length - 2]}</span>
+                    </div>
+                    <div className='data-box'>
+                        <span className='title'>Age: </span>
+                        <span className='data'>{info.age}</span>
+                    </div>
+                    <div className='data-box'>
+                        <span className='title'>Sex: </span>
+                        <span className='data'>{info.sex}</span>
+                    </div>
+                </article>
+                <div className='transactions-container'>
+                    {!isLoading && (
+                        data.map((item: any, index: any) => {
+                            return (
+                                <div className='transaction' key={index}>
+                                    <div className='send-received'>{item.transactionType == 'pix' ? item.accountSender == user?.userAccountNumberFk ? `To ${item.accountReceiver}` : `From ${item.accountSender}` : `${user?.userAccountNumberFk}`}</div>
+                                    <div className='value'>R$ {item.transactionValue}</div>
+                                    <div className='verb'>{item.transactionType == 'pix' ? item.accountSender == user?.userAccountNumberFk ? (<span className='sent'>enviado</span>) : (<span className='received'>recebido</span>) : item.transactionType == 'deposit' ? (<span className='received'>depositado</span>) : (<span className='sent'>transferido</span>)}</div>
+                                    <div className='type'>{item.transactionType}</div>
+                                </div>
+                            )
+                        })
+                    )}
+                </div>
+                <div className='card-container'>
+                    <Card cardCvv={info.ccv} cardHolder={info.name} cardMonth={info.expirationMonth} cardNumber={info.cardNumber} cardYear={info.expirationYear} />
+                </div>
+            </article>
         </section>
     )
 }
