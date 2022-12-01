@@ -11,6 +11,7 @@ import { Pix } from "./pages/Pix";
 import { Deposit } from "./pages/Deposit";
 
 export const URL = "http://localhost:8000"
+export const notifyStyle = { zindex: 99999999, timeout: 1200 }
 
 export const App = () => {
   const router = createBrowserRouter([

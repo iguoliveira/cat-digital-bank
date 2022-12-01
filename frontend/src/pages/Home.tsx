@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/user";
-import Shield from '../assets/shield.png'
 import "./home.scss";
 
 export const Home = () => {
-  document.title = 'Homepage'
   const [user] = useUserStore((state) => [state.user])
 
   return (

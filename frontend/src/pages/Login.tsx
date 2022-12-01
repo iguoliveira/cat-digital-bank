@@ -7,6 +7,7 @@ import { tryLogin } from "../fetchers/user"
 import { useQuery } from "@tanstack/react-query"
 import { useUserStore } from "../stores/user"
 import { Notify } from "notiflix"
+import { notifyStyle } from '../App'
 
 export const Login = () => {
     document.title = 'Login'
@@ -29,10 +30,10 @@ export const Login = () => {
         event?.preventDefault()
         if (data.tryLogin != 'invalid') {
             setUser(data.login[0])
-            Notify.success("Usuario Logado!")
-            navigate(`/user/id:${data.login[0].userAccountNumberFk}/create-card`)
+            Notify.success("Usuario Logado!", notifyStyle)
+            navigate(`/`)
         } else {
-            Notify.failure('Credenciais de login invalidas!')
+            Notify.failure('Credenciais de login invalidas!', notifyStyle)
         }
     }
 

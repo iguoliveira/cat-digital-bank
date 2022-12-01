@@ -8,6 +8,8 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { postTransaction } from '../fetchers/transaction'
 import { accountIsValid, addInBalance, findMany, removeFromBalance } from '../fetchers/account'
 import { Notify } from 'notiflix'
+import { notifyStyle } from '../App'
+
 
 export const Pix = () => {
     const [user] = useUserStore((state) => [state.user])
@@ -32,7 +34,7 @@ export const Pix = () => {
 
     const makeTransaction = useMutation(postTransaction, {
         onSuccess: () => {
-            Notify.success(`PIX de $ ${inputs.transactionValue} enviado para ${inputs.accountSender} com sucesso`, { timeout: 2000 });
+            Notify.success(`PIX de $ ${inputs.transactionValue} enviado para ${inputs.accountSender} com sucesso`, notifyStyle);
         }
     })
     const removeBalance = useMutation(removeFromBalance)
