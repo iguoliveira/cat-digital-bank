@@ -30,7 +30,11 @@ export const Pix = () => {
     const { data: isValid } = useQuery(['accountIsValid', inputs.accountReceiver || '1'], accountIsValid)
     const { data: accounts, isLoading } = useQuery(['fetchAllAccounts', inputs.accountReceiver || '1111111', user?.userAccountNumberFk], findMany)
 
-    const makeTransaction = useMutation(postTransaction)
+    const makeTransaction = useMutation(postTransaction, {
+        onSuccess: () => {
+            Notify.success(`PIX de $ ${inputs.transactionValue} enviado para ${inputs.accountSender} com sucesso`, { timeout: 2000 });
+        }
+    })
     const removeBalance = useMutation(removeFromBalance)
     const addBalance = useMutation(addInBalance)
 
@@ -53,6 +57,7 @@ export const Pix = () => {
     }
 
     function handleSubmit() {
+        event?.preventDefault()
         if (inputs.transactionValue > 0) {
             if (isValid.accountIsValid != 'invalid') {
                 if (info.balance >= inputs.transactionValue) {
@@ -65,7 +70,6 @@ export const Pix = () => {
                     removeBalance.mutate({ valueTransfer: inputs.transactionValue, accountId: user?.userAccountNumberFk })
                     addBalance.mutate({ valueTransfer: inputs.transactionValue, accountId: inputs.accountReceiver })
                 } else {
-                    event?.preventDefault()
                     setErrors({
                         transactionValue: 'NOT ENOUGH BALANCE',
                         accountNumber: '',
@@ -73,7 +77,6 @@ export const Pix = () => {
                     })
                 }
             } else {
-                event?.preventDefault()
                 setErrors({
                     transactionValue: '',
                     accountNumber: 'INVALID ACCOUNT NUMBER',
@@ -81,7 +84,6 @@ export const Pix = () => {
                 })
             }
         } else {
-            event?.preventDefault()
             setErrors({
                 transactionValue: '',
                 accountNumber: '',

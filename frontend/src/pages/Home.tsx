@@ -21,7 +21,7 @@ export const Home = () => {
           (
             <div className="create-account">
               <span>Welcome {user.name}, to our journey!</span>
-              <Link to={`/user/id:${user.id}/profile`}>See your beauty!</Link>
+              <Link to={`/user/id:${user.userAccountNumberFk}/profile`}>See your beauty!</Link>
             </div>
           )}
         <div className="cards">
