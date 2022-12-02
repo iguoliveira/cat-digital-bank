@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/user";
-import Shield from '../assets/shield.png'
 import "./home.scss";
 
 export const Home = () => {
-  document.title = 'Homepage'
   const [user] = useUserStore((state) => [state.user])
 
   return (
@@ -21,7 +19,7 @@ export const Home = () => {
           (
             <div className="create-account">
               <span>Welcome {user.name}, to our journey!</span>
-              <Link to={`/user/id:${user.id}/profile`}>See your beauty!</Link>
+              <Link to={`/user/id:${user.userAccountNumberFk}/profile`}>See your beauty!</Link>
             </div>
           )}
         <div className="cards">

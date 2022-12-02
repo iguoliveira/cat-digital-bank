@@ -7,6 +7,7 @@ import { useMutation } from '@tanstack/react-query'
 import { postUser } from '../fetchers/user'
 import { postAccount } from '../fetchers/account'
 import { Notify } from 'notiflix'
+import { notifyStyle } from '../App'
 
 export const Signup = () => {
     document.title = "Sign Up"
@@ -30,7 +31,7 @@ export const Signup = () => {
     const accountMutation = useMutation(postAccount)
     const mutation = useMutation(postUser, {
         onSuccess: () => {
-            Notify.success('Conta Criada', { clickToClose: true, timeout: 2000 })
+            Notify.success('Conta Criada', notifyStyle)
             navigate('/login')
         }
     })

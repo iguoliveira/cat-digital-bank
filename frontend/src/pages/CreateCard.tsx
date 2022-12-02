@@ -7,6 +7,7 @@ import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { Button, Input } from '../components/Input'
 import { postCard } from '../fetchers/card'
 import { useUserStore } from '../stores/user'
+import { notifyStyle } from '../App'
 
 export const CreateCard = () => {
     const data: any = useLoaderData()
@@ -32,7 +33,7 @@ export const CreateCard = () => {
     })
     const mutation = useMutation(postCard, {
         onSuccess: () => {
-            Notify.success('Card Created!', { clickToClose: true, timeout: 2000 })
+            Notify.success('Card Created!', notifyStyle)
             navigate("/")
         }
     })

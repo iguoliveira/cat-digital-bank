@@ -7,6 +7,8 @@ import { useUserStore } from '../stores/user'
 import { useMutation } from '@tanstack/react-query'
 import { postTransaction } from '../fetchers/transaction'
 import { addInBalance } from '../fetchers/account'
+import { Notify } from 'notiflix'
+import { notifyStyle } from '../App'
 
 export const Deposit = () => {
     const [user] = useUserStore((state) => [state.user])
@@ -18,7 +20,11 @@ export const Deposit = () => {
         accountReceiver: user?.userAccountNumberFk
     })
 
-    const makeTransaction = useMutation(postTransaction)
+    const makeTransaction = useMutation(postTransaction, {
+        onSuccess: () => {
+            Notify.success(`R$ ${inputs.transactionValue} depositado com sucesso`, notifyStyle);
+        }
+    })
     const addBalance = useMutation(addInBalance)
 
     function handleChange(event: any) {
@@ -29,6 +35,7 @@ export const Deposit = () => {
     }
 
     function handleSubmit() {
+        event?.preventDefault()
         makeTransaction.mutate(inputs)
         addBalance.mutate({ valueTransfer: inputs.transactionValue, accountId: inputs.accountReceiver })
     }
